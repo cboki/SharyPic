@@ -1,12 +1,9 @@
 <div class="container">
-
   <div class="app">
-
     <a href="#" id="start-camera" class="visible">This is the camera button on the Event Page</a>
     <video id="camera-stream"></video>
     <img id="snap">
     <p id="error-message"></p>
-
     <div class="controls">
       <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
       <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
@@ -27,33 +24,27 @@
       margin: 0;
       padding: 0;
   }
-
   html{
       background-color: #fff;
       font:normal 16px/1.5 sans-serif;
       color: #333;
   }
-
   h3{
       font: normal 32px/1.5 'Open Sans', sans-serif;
       color: #2c3e50;
       margin: 50px 0;
       text-align: center;
   }
-
-
   .container{
       max-width: 1000px;
       margin: 50px auto;
       padding: 20px;
       background-color: #efefef;
   }
-
   .app{
       width: 100%;
       position: relative;
   }
-
   .app #start-camera{
       display: none;
       border-radius: 3px;
@@ -66,12 +57,10 @@
       margin: 50px auto;
       text-align: center;
   }
-
   .app video#camera-stream{
       display: none;
       width: 100%;
   }
-
   .app img#snap{
       position: absolute;
       top: 0;
@@ -80,7 +69,6 @@
       z-index: 10;
       display: none;
   }
-
   .app #error-message{
       width: 100%;
       background-color: #ccc;
@@ -90,7 +78,6 @@
       text-align: center;
       display: none;
   }
-
   .app .controls{
       position: absolute;
       top: 0;
@@ -98,7 +85,6 @@
       width: 100%;
       height: 100%;
       z-index: 20;
-
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
@@ -117,43 +103,33 @@
       outline: none;
       -webkit-tap-highlight-color: transparent;
   }
-
   .app .controls a:hover{
       opacity: 1;
   }
-
   .app .controls a.disabled{
       background-color: #555;
       opacity: 0.5;
       cursor: default;
       pointer-events: none;
   }
-
   .app .controls a.disabled:hover{
       opacity: 0.5;
   }
-
   .app .controls a i{
       font-size: 18px;
   }
-
   .app .controls #take-photo i{
       font-size: 32px;
   }
-
   .app canvas{
       display: none;
   }
-
-
-
   .app video#camera-stream.visible,
   .app img#snap.visible,
   .app #error-message.visible
   {
       display: block;
   }
-
   .app .controls.visible{
       display: flex;
   }
@@ -162,15 +138,12 @@
       .container{
           margin: 40px;
       }
-
       .app #start-camera.visible{
           display: block;
       }
-
       .app .controls a i{
           font-size: 16px;
       }
-
       .app .controls #take-photo i{
           font-size: 24px;
       }
@@ -180,26 +153,21 @@
       .container{
           margin: 10px;
       }
-
       .app #error-message{
           padding: 80px 50px;
           font-size: 18px;
       }
-
       .app .controls a i{
           font-size: 12px;
       }
-
       .app .controls #take-photo i{
           font-size: 18px;
       }
   }
-
 </style>
 
 <script>
-  // <src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript">
-
+// <src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript">
 
 // References to all the element we will need.
 var video = document.querySelector('#camera-stream'),
@@ -223,7 +191,6 @@ if(!navigator.getMedia){
   displayErrorMessage("Your browser doesn't have support for the navigator.getUserMedia interface.");
 }
 else{
-
   // Request the camera.
   navigator.getMedia(
     {
@@ -231,7 +198,6 @@ else{
     },
     // Success Callback
     function(stream){
-
       // Create an object URL for the video stream and
       // set it as src of our HTLM video element.
       video.src = window.URL.createObjectURL(stream);
@@ -241,14 +207,12 @@ else{
       video.onplay = function() {
         showVideo();
       };
-
     },
     // Error Callback
     function(err){
       displayErrorMessage("There was an error with accessing the camera stream: " + err.name, err);
     }
   );
-
 }
 
 // Mobile browsers cannot play video without user input,
@@ -260,16 +224,13 @@ start_camera.addEventListener("click", function(e){
   // Start video playback manually.
   video.play();
   showVideo();
-
 });
 
 
 take_photo_btn.addEventListener("click", function(e){
-
   e.preventDefault();
-
   var snap = takeSnapshot();
-
+  
   // Show image.
   image.setAttribute('src', snap);
   image.classList.add("visible");
@@ -283,12 +244,10 @@ take_photo_btn.addEventListener("click", function(e){
 
   // Pause video playback of stream.
   video.pause();
-
 });
 
 
 delete_photo_btn.addEventListener("click", function(e){
-
   e.preventDefault();
 
   // Hide image.
@@ -301,10 +260,7 @@ delete_photo_btn.addEventListener("click", function(e){
 
   // Resume playback of stream.
   video.play();
-
 });
-
-
 
 function showVideo(){
   // Display the video stream and the controls.
@@ -313,7 +269,6 @@ function showVideo(){
   video.classList.add("visible");
   controls.classList.add("visible");
 };
-
 
 function takeSnapshot(){
   // Here we're using a trick that involves a hidden canvas element.
@@ -347,24 +302,18 @@ function takeSnapshot(){
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 };
 
-
-
 function displayErrorMessage(error_msg, error){
   error = error || "";
   if(error){
     console.log(error);
   }
-
   error_message.innerText = error_msg;
-
   hideUI();
   error_message.classList.add("visible");
 };
 
-
 function hideUI(){
   // Helper function for clearing the app UI.
-
   controls.classList.remove("visible");
   start_camera.classList.remove("visible");
   video.classList.remove("visible");
@@ -373,11 +322,8 @@ function hideUI(){
 };
 </script>
 
-
-
-
-
-<!-- <video id="camera" width=400 height=600 autoplay></video>
+<!-- OLD VERSION 
+<video id="camera" width=400 height=600 autoplay></video>
 <button id="capture">Capture</button>
 <canvas id="canvas" width=400 height=600></canvas>
 <a id="dl-btn" href="#" download="glorious_selfie.png">Save Photo</a>
