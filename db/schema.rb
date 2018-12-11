@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_145818) do
+ActiveRecord::Schema.define(version: 2018_12_11_112338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 2018_12_10_145818) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "eventguests", force: :cascade do |t|
+  create_table "event_guests", force: :cascade do |t|
     t.bigint "event_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_eventguests_on_event_id"
-    t.index ["user_id"], name: "index_eventguests_on_user_id"
+    t.index ["event_id"], name: "index_event_guests_on_event_id"
+    t.index ["user_id"], name: "index_event_guests_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2018_12_10_145818) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "photo_tags", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_id"], name: "index_photo_tags_on_photo_id"
+    t.index ["tag_id"], name: "index_photo_tags_on_tag_id"
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string "file"
     t.bigint "event_id"
@@ -68,15 +77,6 @@ ActiveRecord::Schema.define(version: 2018_12_10_145818) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_photos_on_event_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
-  end
-
-  create_table "phototags", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "photo_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["photo_id"], name: "index_phototags_on_photo_id"
-    t.index ["tag_id"], name: "index_phototags_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -100,13 +100,13 @@ ActiveRecord::Schema.define(version: 2018_12_10_145818) do
   end
 
   add_foreign_key "comments", "users"
-  add_foreign_key "eventguests", "events"
-  add_foreign_key "eventguests", "users"
+  add_foreign_key "event_guests", "events"
+  add_foreign_key "event_guests", "users"
   add_foreign_key "events", "users"
   add_foreign_key "likes", "photos"
   add_foreign_key "likes", "users"
+  add_foreign_key "photo_tags", "photos"
+  add_foreign_key "photo_tags", "tags"
   add_foreign_key "photos", "events"
   add_foreign_key "photos", "users"
-  add_foreign_key "phototags", "photos"
-  add_foreign_key "phototags", "tags"
 end
