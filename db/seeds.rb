@@ -2,9 +2,9 @@ require 'faker'
 require 'byebug'
 
 puts 'Cleaning up database...'
-Eventguest.destroy_all
+EventGuest.destroy_all
 puts 'Cleaned all the eventguests...'
-Phototag.destroy_all
+PhotoTag.destroy_all
 puts 'Cleaned all the phototags...'
 Comment.destroy_all
 puts 'Cleaned all the comments...'
@@ -48,7 +48,7 @@ end
 puts 'Created an event for all users...'
 
 250.times do
-  eventguest = Eventguest.create(
+  eventguest = EventGuest.create(
     event: Event.all.sample,
     user: User.all.sample
   )
@@ -96,7 +96,7 @@ end
 puts 'Created 17 new tags...'
 
 200.times do
-  phototag = Phototag.create(
+  phototag = PhotoTag.create(
     tag: Tag.all.sample,
     photo: Photo.all.sample
   )
