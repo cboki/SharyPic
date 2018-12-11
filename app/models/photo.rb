@@ -4,4 +4,6 @@ class Photo < ApplicationRecord
   has_many :phototags
   has_many :tags, through: :phototags
   has_many :comments, as: :commentable
+
+  validates :file, :event, presence: true
 end
