@@ -1,69 +1,57 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-require "byebug"
+require 'byebug'
 
 puts 'Cleaning up database...'
-User.destroy_all
-puts 'Cleaned all the users...'
-Event.destroy_all
-puts 'Cleaned all the events...'
 Eventguest.destroy_all
 puts 'Cleaned all the eventguests...'
-Photo.destroy_all
-puts 'Cleaned all the photos...'
-Tag.destroy_all
-puts 'Cleaned all the tags...'
 Phototag.destroy_all
 puts 'Cleaned all the phototags...'
-Like.destroy_all
-puts 'Cleaned all the likes...'
 Comment.destroy_all
 puts 'Cleaned all the comments...'
 Like.destroy_all
 puts 'Cleaned all the likes...'
+Photo.destroy_all
+puts 'Cleaned all the photos...'
+Event.destroy_all
+puts 'Cleaned all the events...'
+Tag.destroy_all
+puts 'Cleaned all the tags...'
+Like.destroy_all
+puts 'Cleaned all the likes...'
+User.destroy_all
+puts 'Cleaned all the users...'
 
-puts 'DATEBASE IS CLEAN!!!'
+puts 'DATABASE IS CLEAN!!!'
 
-github_names = ['welan125','BenDu89','carolinalemos','sisserian','kauredo','UpClelia','cboki','dfmore','jonnymarshall','mlrcbsousa','matbrg','pbusby','Bitais']
+github_names = %w[welan125 BenDu89 carolinalemos sisserian kauredo UpClelia cboki dfmore jonnymarshall mlrcbsousa matbrg pbusby Bitais]
 
 50.times do
   photo_for_avatar = github_names.sample
-  user = User.new(
+  user = User.create(
     email: Faker::Internet.email,
-    password: "123456",
+    password: '123456',
     professional: false,
-    photo: "https://kitt.lewagon.com/placeholder/users/#{photo_for_avatar}"
-    )
-  user.save
+    photo: 'https://kitt.lewagon.com/placeholder/users/#{photo_for_avatar}'
+  )
 end
 puts 'Created 50 new users...'
 
-user_id = 1
-50.times do
-  event = Event.new(
-    user_id: user_id,
+User.all.each do |user|
+  event = Event.create(
+    creator: user,
     name: Faker::Esport.event,
     location: Faker::Address.city,
     radius: rand(500..1000),
     start_date: Faker::Date.forward(100),
-    )
-  user_id += 1
-  event.save
+  )
 end
-puts 'Created 50 new event...'
+puts 'Created an event for all users...'
 
 250.times do
-  eventguest = Eventguest.new(
-    event_id: rand(1..50),
-    user_id: rand(1..50)
-    )
-  eventguest.save
+  eventguest = Eventguest.create(
+    event: Event.all.sample,
+    user: User.all.sample
+  )
 end
 puts 'Created 250 new guestevent...'
 
@@ -90,64 +78,56 @@ photo_urls = [ 'https://cdn.shopify.com/s/files/1/0684/3259/files/5.jpg',
   until user.events.count > 0
     user = User.all.sample
   end
-  photo = Photo.new(
+  photo = Photo.create(
     file: photo_urls.sample,
-    user_id: user.id,
+    user: user,
     event_id: user.events.sample.id
-    )
-  photo.save
+  )
 end
 puts 'Created 500 new photos...'
 
 tags = %w[ dog house star phone girl men t-shirt shirt laptop headphones cup jacket face backpack cable food bottle]
 
 tags.each do |arr|
-  tag_new = Tag.new(
+  tag_new = Tag.create(
     name: arr
   )
-  tag_new.save
 end
 puts 'Created 17 new tags...'
 
 200.times do
-  phototag = Phototag.new(
-    tag_id: rand(1..17),
-    photo_id: rand(1..500)
-    )
-  phototag.save
+  phototag = Phototag.create(
+    tag: Tag.all.sample,
+    photo: Photo.all.sample
+  )
 end
 puts 'Created 200 new phototags...'
 
 250.times do
-  like = Like.new(
+  like = Like.create(
     user: User.all.sample,
-    photo_id: rand(1..500)
-    )
-  like.save
+    photo: Photo.all.sample
+  )
 end
 puts 'Created 250 new likes...'
 
 100.times do
-  event = Event.all.sample
-  comment = Comment.new(
+  comment = Comment.create(
     user: User.all.sample,
-    content: Faker::SiliconValley.quote
-    )
-    comment.update_attribute(:commentable,event)
+    content: Faker::SiliconValley.quote,
+    commentable: Event.all.sample
+  )
+  # comment.update_attribute(:commentable,event)
 end
 puts 'Created 100 new comments on events...'
 
 100.times do
-  photo = Photo.all.sample
-  comment = Comment.new(
+  comment = Comment.create(
     user: User.all.sample,
-    content: Faker::SiliconValley.quote
-    )
-    comment.update_attribute(:commentable,photo)
+    content: Faker::SiliconValley.quote,
+    commentable: Photo.all.sample
+  )
 end
 puts 'Created 100 new comments on photos...'
 
 puts 'Seeding DONE!!!'
-
-# OLD CODE
-
