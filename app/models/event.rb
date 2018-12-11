@@ -4,4 +4,8 @@ class Event < ApplicationRecord
   has_many :event_guests
   has_many :users, through: :event_guests
   has_many :comments, as: :commentable
+
+  validates :creator, presence: true
+  validates :name, presence: true
+
 end
