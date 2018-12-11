@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  mount_uploader :photo, PhotoUploader
+  # mount_uploader :photo, PhotoUploader
   has_many :event_guests
   has_many :events, through: :event_guests
   has_many :photos
