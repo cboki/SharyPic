@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    # @events = Event.all has now to be
+    @events = policy_scope(Event)
     # policy_scope(Event) .addOtherMethods
   end
 
