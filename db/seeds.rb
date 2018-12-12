@@ -36,11 +36,15 @@ github_names = %w[welan125 BenDu89 carolinalemos sisserian kauredo UpClelia cbok
 end
 puts 'Created 50 new users...'
 
+PLACES = ['Praça do Comerçio, Lisboa', 'Tour Eiffel, Paris', 'Place de la Concorde, Paris', 'Avenida Paulista, Sao Paulo',
+          'Avenida Atlantica, Rio de Janeiro', 'Avenida Almirante Reis, Lisboa', 'Rua Augusta, Lisboa', 'Cais do Sodré, Lisboa',
+          'Rua de Sao Paulo, Lisboa', 'Avenida da Liberdade, Lisboa']
+
 User.all.each do |user|
   event = Event.create(
     creator: user,
     name: Faker::Esport.event,
-    location: Faker::Address.city,
+    location: PLACES.sample,
     radius: rand(500..1000),
     start_date: Faker::Date.forward(100),
   )
