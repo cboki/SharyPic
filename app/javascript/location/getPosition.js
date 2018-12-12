@@ -1,5 +1,7 @@
 function getUserLocationOnClick() {
   const button = document.getElementById('search-by-location');
+  const eventsNearby = document.getElementById('events-nearby');
+
   if (button) {
     var options = {
     enableHighAccuracy: true,
@@ -9,16 +11,15 @@ function getUserLocationOnClick() {
 
     const sendPositionToServer = (coordinates) => {
       console.log(coordinates);
-      fetch('/events/nearby', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ query: coordinates })
-      })
+      fetch(`/events/nearby?lat=${coordinates.latitude}&lon=${coordinates.longitude}`)
         .then(response => response.json())
         .then((data) => {
           console.log(data);
+          data.forEach((event) => {
+            const item = `<li>${event.location}</li>`;
+            console.log(item);
+            eventsNearby.insertAdjacentHTML('beforeend', item);
+          });
         });
     }
 

@@ -24,6 +24,9 @@ class EventPolicy < ApplicationPolicy
       record.user == user
     end
 
+    def nearby?
+      true
+    end
   end
 end
 

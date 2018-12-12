@@ -7,12 +7,13 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create]
   end
 
-  resources :pages, only: [:home, :about, :contact]
-  resources :events, only: [:index, :new, :create, :edit, :update, :destroy]
-
-  resources :events, only: [:show] do
+  resources :events do
+    collection do
+      get 'nearby', to: 'events#nearby'
+    end
     resources :photos, only: [:new, :create, :show, :destroy]
   end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
