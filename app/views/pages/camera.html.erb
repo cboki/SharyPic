@@ -217,7 +217,7 @@ else{
 
 // Mobile browsers cannot play video without user input,
 // so here we're using a button to start it manually.
-start_camera.addEventListener("click", function(e){
+start_camera.addEventListener("click", function (e){
 
   e.preventDefault();
 
@@ -230,7 +230,7 @@ start_camera.addEventListener("click", function(e){
 take_photo_btn.addEventListener("click", function(e){
   e.preventDefault();
   var snap = takeSnapshot();
-  
+
   // Show image.
   image.setAttribute('src', snap);
   image.classList.add("visible");
@@ -240,7 +240,13 @@ take_photo_btn.addEventListener("click", function(e){
   download_photo_btn.classList.remove("disabled");
 
   // Set the href attribute of the download button to the snap url.
-  download_photo_btn.href = snap;
+  // download_photo_btn.href = snap;
+
+
+  download_photo_btn.addEventListener("click", function(e){
+    e.preventDefault();
+    uploadFile(snap);
+  });
 
   // Pause video playback of stream.
   video.pause();
@@ -293,13 +299,17 @@ function takeSnapshot(){
   }
 };
 
-    // *********** Upload file to Cloudinary ******************** //
-    function uploadFile(file) {
-    var url = `https://api.cloudinary.com/v1_1/mmg420cloud/upload`;
-    var xhr = new XMLHttpRequest();
-    var fd = new FormData();
-    xhr.open('POST', url, true);
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+// *********** Upload file to Cloudinary ******************** //
+function uploadFile(file) {
+  var url = `https://api.cloudinary.com/v1_1/mmg420cloud/upload`;
+  var xhr = new XMLHttpRequest();
+  var fd = new FormData();
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  fd.append('upload_preset', 'bp7yx9sg');
+  fd.append('tags', 'browser_upload');
+  fd.append('file', file);
+  xhr.send(fd);
 };
 
 function displayErrorMessage(error_msg, error){
@@ -322,7 +332,7 @@ function hideUI(){
 };
 </script>
 
-<!-- OLD VERSION 
+<!-- OLD VERSION
 <video id="camera" width=400 height=600 autoplay></video>
 <button id="capture">Capture</button>
 <canvas id="canvas" width=400 height=600></canvas>
@@ -354,3 +364,4 @@ function hideUI(){
     });
 </script>
  -->
+
