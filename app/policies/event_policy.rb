@@ -8,6 +8,10 @@ class EventPolicy < ApplicationPolicy
       # scope.wehere(user: user)
     end
 
+    def new?
+      true
+    end
+
     def show?
       true
     end
@@ -23,7 +27,5 @@ class EventPolicy < ApplicationPolicy
     def destroy?
       record.user == user
     end
-
   end
 end
-
