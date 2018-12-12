@@ -1,6 +1,5 @@
 import flatpickr from 'flatpickr';
 
-
 function datePicker() {
   const startDateinput = document.getElementById('event_start_date');
   const endDateinput = document.getElementById('event_end_date');

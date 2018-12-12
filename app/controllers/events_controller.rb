@@ -25,7 +25,6 @@ class EventsController < ApplicationController
     end
   end
 
-
   def edit
     # authorize @event
   end
