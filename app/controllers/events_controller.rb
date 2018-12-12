@@ -6,17 +6,23 @@ class EventsController < ApplicationController
   end
 
   def show
-    # @event = authorize Event.find(params[:id])
+    @event = authorize Event.find(params[:id])
   end
 
   def new
-    @event = Event.new
+    @event = current_user.events.new
     authorize @event
-
   end
 
   def create
-    # authorize @event
+    @event = Event.new(event_params)
+    @event.creator = current_user
+    authorize @event
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -29,5 +35,11 @@ class EventsController < ApplicationController
 
   def destroy
     # authorize @event
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:name, :location, :radius, :start_date, :end_date, :access_key)
   end
 end
