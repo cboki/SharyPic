@@ -1,5 +1,5 @@
 require 'faker'
-require 'byebug'
+
 
 puts 'Cleaning up database...'
 EventGuest.destroy_all
