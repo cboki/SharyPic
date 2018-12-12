@@ -1,26 +1,35 @@
 .toplinks{
   padding: 20px;
+  font-size: 14px;
 }
 .banner {
-  height: 50vh;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('homebg.jpg');
-  background-size: cover;
+  color: white;
+  text-align: center;
+  height: calc(80vh - 70px);
+  background-image: linear-gradient(rgba(0,0,10,0.3), rgba(1,0,0,0.7)), url('homebg.jpg');
+  background-size: cover !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 30px;
 }
+
 .logo {
   display: flex;
   padding-bottom: 30px;
+  justify-content: center;
+  align-items: center;
 }
 .wrapper1{
-  background-color: gray;
+  padding: 30px;
+  color: $red;
 }
 
 .question h2 {
   margin:5px;
 }
 
-.question {
-  padding-bottom: 30px;
+.fa-red {
+  color: #900808;
+  margin: 5px;
 }
