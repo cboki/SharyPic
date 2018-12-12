@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="event-card">
+        <div class="event-card-info">
+          <h1><%= @event.name %></h1>
+          <div class="event-card-avatar">
+            <p><%= image_tag(User.find(@event.user_id).photo, :style=>'height:60px; width:60px; border-radius:50px;') %></p>
+          </div>
+          <h2><%= @event.location  %> </h2>
+          <p> <%= @event.start_date %> <%= @event.end_date  %> </p>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="event-card-photos text-center">
+          <% @event.users.each do |user|  %>
+          <% user.photos.each do |photo|  %>
+          <%= cl_image_tag(photo.file, :width=>70, :height=>70) %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

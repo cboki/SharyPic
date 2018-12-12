@@ -1,11 +1,11 @@
 class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      # Anyone
       scope.all
+    end
 
-      # Owner
-      # scope.wehere(user: user)
+    def new?
+      true
     end
 
     def show?
@@ -29,4 +29,3 @@ class EventPolicy < ApplicationPolicy
     end
   end
 end
-

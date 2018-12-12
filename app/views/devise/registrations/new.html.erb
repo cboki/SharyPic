@@ -15,13 +15,9 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-
     <%= f.file_field :photo,
                 required: true
                    %>
-    <%= f.hidden_field :photo_cache,
-                required: true
-                  %>
   </div>
 
   <div class="form-actions">

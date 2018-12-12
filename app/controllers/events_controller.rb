@@ -7,15 +7,23 @@ class EventsController < ApplicationController
   end
 
   def show
-    # @event = authorize Event.find(params[:id])
+    @event = authorize Event.find(params[:id])
   end
 
   def new
-    # authorize @event
+    @event = current_user.events.new
+    authorize @event
   end
 
   def create
-    # authorize @event
+    @event = Event.new(event_params)
+    @event.creator = current_user
+    authorize @event
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -40,11 +48,16 @@ class EventsController < ApplicationController
         format.json { render json: @events } # <-- will render `app/views/events/nearby.js.erb`
       end
     end
+  end
     # else
     #   respond_to do |format|
     #     format.html { redirect_to events_path }
     #     format.js  # <-- idem
     #   end
     # end
+  private
+
+  def event_params
+    params.require(:event).permit(:name, :location, :radius, :start_date, :end_date, :access_key)
   end
 end

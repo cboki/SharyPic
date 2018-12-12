@@ -1,46 +1,73 @@
-<div class= "toplinks container text-right">
-  <ul class="list-inline">
-    <li>Log in</li>
-    <li>Sign in</li>
-  </ul>
-</div>
-
+<% if user_signed_in? %>
+  <% else %>
+    <div class= "toplinks container text-right">
+      <ul class="list-inline">
+        <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path %></li>
+        <li><%= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path %></li>
+      </ul>
+    </div>
+<% end %>
 
 <div class="banner">
   <div class="bannercontent text-center">
-    <div class="logo">
-      <%= image_tag "mainlogo.png"%>
+    <div class="logo"><%= image_tag "mainlogo.png"%>
     </div>
     <%= link_to "START NOW", "/events/index.html.erb", class: "btn btn-danger" %>
+     <h1>Share your photos easily and instantely with everybody.</h1>
   </div>
 </div>
 
-<div class="wrapper1">
+<div class="wrapper3">
   <div class="container text-center">
-    <h1>Share your photos easily and
- instantely with everybody.</h1>
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>Why using SharyPic ?</h2></div>
-      <div class="col-xs-12">
-        <h2>How does it work ?</h2></div>
-      <div class="col-xs-12">
-        <h2>Check events</h2></div>
+    <div id="how" class= "frame-title">How does it work ?
     </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 card">
+          <div><i class="number">1</i></div>
+          <h2><strong>Take a picture or Upload photo</strong></h2>
+          <h2> Open SharyPic camera to take a photo or upload photos from your galery.</h2>
+        </div>
+        <div class="col-xs-12 col-sm-4 card">
+          <div><i class="number">2</i></div>
+          <h2><strong>Select a current event</strong></h2>
+          <h2>Look for event near you. Add the photo to the event you want to participate.</h2>
+        </div>
+        <div class="col-xs-12 col-sm-4 card">
+          <div><i class="number">3</i></div>
+          <h2><strong>Have fun</strong></h2>
+          <h2>Like, comment and download all your favorite pictures.</h2>
+        </div>
+      </div>
   </div>
 </div>
+
 <div class="wrapper2">
   <div class="container text-center">
-    <h1>Why using SharyPic?</h1>
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>It's easy</h2></div>
-      <div class="col-xs-12">
-        <h2>It's fast</h2></div>
-      <div class="col-xs-12">
-        <h2>It's </h2></div>
+    <div id="why" class= "frame-title">Why using SharyPic ?
     </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 card">
+          <h2><strong>Because it's easy</strong></h2>
+          <i class="fas fa-globe fa-3x fa-red"></i>
+          <h2>No need e-mails, or phone numbers. You can share photos with everyone who's near you.</h2>
+        </div>
+        <div class="col-xs-12 col-sm-3 card">
+          <h2><strong>It's fast</strong></h2>
+          <i class="fas fa-map-marker-alt fa-3x fa fa-red"></i>
+          <h2>Find all the pictures of an event instantely thanks to geolocation</h2>
+        </div>
+        <div class="col-xs-12 col-sm-3 card">
+          <h2><strong>It's fun</strong></h2>
+          <i class="fas fa-heart fa-3x fa-red"></i>
+          <h2>Share best moments with your community. Like and comment your favorite pictures </h2>
+        </div>
+        <div class="col-xs-12 col-sm-3 card">
+          <h2><strong>It's diverse</strong></h2>
+          <i class="fas fa-portrait fa-3x fa-red"></i>
+          <h2>See photos of you within different angles. You can even access to professional pictures. </h2>
+        </div>
+      </div>
   </div>
 </div>
 
-</div>
+
