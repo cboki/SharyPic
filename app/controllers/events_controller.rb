@@ -7,9 +7,6 @@ class EventsController < ApplicationController
 
   def show
     @event = authorize Event.find(params[:id])
-    @users = User.all
-    @photos = Photo.all
-    authorize @photos
   end
 
   def new
