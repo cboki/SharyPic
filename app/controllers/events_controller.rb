@@ -1,22 +1,29 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :nearby]
+  skip_after_action :verify_authorized, only: :nearby
   def index
-    # @events = Event.all has now to be
+    @events = policy_scope(Event)
     # policy_scope(Event) .addOtherMethods
   end
 
   def show
-    # @event = authorize Event.find(params[:id])
+    @event = authorize Event.find(params[:id])
   end
 
   def new
-    @event = Event.new
+    @event = current_user.events.new
     authorize @event
-
   end
 
   def create
-    # authorize @event
+    @event = Event.new(event_params)
+    @event.creator = current_user
+    authorize @event
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -29,5 +36,28 @@ class EventsController < ApplicationController
 
   def destroy
     # authorize @event
+  end
+
+  def nearby
+    latitude = params[:lat]
+    longitude = params[:lon]
+    @events = Event.near([latitude, longitude], 1)
+
+    if @events.any?
+      respond_to do |format|
+        format.json { render json: @events } # <-- will render `app/views/events/nearby.js.erb`
+      end
+    end
+  end
+    # else
+    #   respond_to do |format|
+    #     format.html { redirect_to events_path }
+    #     format.js  # <-- idem
+    #   end
+    # end
+  private
+
+  def event_params
+    params.require(:event).permit(:name, :location, :radius, :start_date, :end_date, :access_key)
   end
 end
