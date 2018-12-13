@@ -1,23 +1,37 @@
 require "byebug"
 
 class PhotosController < ApplicationController
+
+  # skip_before_action :authenticate_user!
+
   skip_before_action :authenticate_user!
   skip_after_action :verify_authorized, only: :googleApi
+
   def show
     # @photo = authorize Photo.find(params[:id])
   end
 
   def new
-    # authorize @photo
+
   end
 
   def create
-    # authorize @photo
+    @photo = Photo.new(photo_params)
+    @photo.user = current_user
+    @photo.event = Event.last
+    @photo.save
+    authorize @photo
   end
 
   def destroy
     # authorize @photo
   end
+
+
+  private
+
+  def photo_params
+    params.require(:photo).permit(:file)
 
   def googleApi
     image_annotator = Google::Cloud::Vision::ImageAnnotator.new
@@ -40,5 +54,6 @@ class PhotosController < ApplicationController
       end
     end
     # need to add a redircet to the photopage
+
   end
 end

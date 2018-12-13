@@ -6,4 +6,3 @@ import { datePicker } from '../components/_datepicker';
 
 getUserLocationOnClick();
 datePicker();
-
