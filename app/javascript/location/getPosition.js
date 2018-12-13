@@ -11,7 +11,7 @@ function getUserLocationOnClick() {
 
     const sendPositionToServer = (coordinates) => {
       console.log(coordinates);
-      fetch(`/events/nearby?lat=${coordinates.latitude}&lon=${coordinates.longitude}`)
+      fetch(`/events/nearby?lat=${coordinates.latitude}&lon=${coordinates.longitude}&acc=${coordinates.accuracy}`)
         .then(response => response.json())
         .then((data) => {
           console.log(data);

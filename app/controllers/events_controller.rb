@@ -39,13 +39,15 @@ class EventsController < ApplicationController
   end
 
   def nearby
-    latitude = params[:lat]
-    longitude = params[:lon]
-    @events = Event.near([latitude, longitude], 1)
+    @latitude = params[:lat].to_f
+    @longitude = params[:lon].to_f
+    @accuracy = params[:acc].to_i
+
+    @events = Event.near([@latitude, @longitude], 1)
 
     if @events.any?
       respond_to do |format|
-        format.json { render json: @events } # <-- will render `app/views/events/nearby.js.erb`
+        format.json # { render json: @events } <-- will render `app/views/events/nearby.js.erb`
       end
     end
   end
