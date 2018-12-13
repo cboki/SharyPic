@@ -8,7 +8,7 @@ class PhotosController < ApplicationController
   skip_after_action :verify_authorized, only: :googleApi
 
   def show
-    # @photo = authorize Photo.find(params[:id])
+    @photo = authorize Photo.find(params[:id])
   end
 
   def new
