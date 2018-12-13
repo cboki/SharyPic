@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/camera', to: 'pages#camera'
+  get '/googleApi', to: 'photos#googleApi'
   resources :users, only: [] do
     resources :comments, only: [:new, :create]
   end

@@ -86,7 +86,7 @@ photo_urls = [ 'https://cdn.shopify.com/s/files/1/0684/3259/files/5.jpg',
 end
 puts 'Created 500 new photos...'
 
-tags = %w[ dog house star phone girl men t-shirt shirt laptop headphones cup jacket face backpack cable food bottle]
+tags = %w[ dog house star phone girl men t-shirt shirt laptop headphones cup jacket face backpack cable food bottle bride hair]
 
 tags.each do |arr|
   tag_new = Tag.create(
