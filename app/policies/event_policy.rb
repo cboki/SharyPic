@@ -27,5 +27,9 @@ class EventPolicy < ApplicationPolicy
     def nearby?
       true
     end
+
+    def search?
+      true
+    end
   end
 end

@@ -14,21 +14,22 @@
                 //Step 3:  Add list of sources that should be added as tabs in the widget.
                 sources: [
                     "local",
+                    "url",
                     "camera"
                 ],
                 //UI Customization
                 styles: {
                     palette: {
-                        window: "#ffffff",
-                        sourceBg: "#f4f4f4",
-                        windowBorder: "#900808",
-                        tabIcon: "#900808",
-                        inactiveTabIcon: "#f9eded",
-                        menuIcons: "#900808",
-                        link: "#900808",
-                        action: "#900808",
-                        inProgress: "#900808",
-                        complete: "#3ccc3c",
+                        window: "#10173a",
+                        sourceBg: "#20304b",
+                        windowBorder: "#9999ff",
+                        tabIcon: "#33ffcc",
+                        inactiveTabIcon: "#0e2f5a",
+                        menuIcons: "#ffccff",
+                        link: "#ff0066",
+                        action: "#33ffcc",
+                        inProgress: "#00ffcc",
+                        complete: "#33ff00",
                         error: "#cc3333",
                         textDark: "#000000",
                         textLight: "#ffffff"
@@ -42,23 +43,9 @@
             },
             function(error, result) {
 
-                //Step 2.3:  Listen to 'success'
-
+                //Step 2.3:  Listen to 'success' event
                 if (result.event === "success") {
-                  var data = new FormData;
-                  data.append('photo[file]', result.info.secure_url);
-                  fetch('/photos', {
-                      method: "POST",
-                      body: data,
-                      headers: {
-                        'X-CSRF-Token': Rails.csrfToken(),
-                      },
-                      credentials: 'same-origin'
-                    })
-
-
                     //Step 2.4:  Call the .close() method in order to close the widget
-
                     myUploadWidget.close();
                 }
             });
@@ -66,4 +53,4 @@
 
     //Step 2.2:  Call the .open() method in order to open the widget
     myUploadWidget.open();
-</script>s
+</script>

@@ -1,8 +1,20 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon ">
 
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+  <%= link_to root_path, class: "navbar-logo" do %>
+    <%= image_tag "logo.png", height: 60 %>
+  <% end %>
+
+  <%= link_to events_path, class: "navbar-gps" do %>
+      <i class="fas fa-map-marker-alt fa-2x fa-red"></i>
+  <% end %>
+
+  <%= link_to root_path, class: "navbar-camera" do %>
+      <i class="fas fa-camera fa-3x fa-red"></i>
+  <% end %>
+
+  <%= link_to root_path, class: "navbar-upload" do %>
+      <i class="fas fa-image fa-2x fa-red"></i>
   <% end %>
 
   <!-- Right Navigation -->
@@ -16,7 +28,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.photo == nil %>
-            <% cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill %>
+
             <% else %>
               <%= cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill %>
             <% end %>
@@ -46,12 +58,12 @@
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+  <div class="hidden-md hidden-lg">
+    <div class="btn-group dropup">
+      <i class="fas fa-user-circle fa-2x fa-red" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
               <% end %></li>
         <li><%= link_to "#" do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
@@ -63,3 +75,5 @@
     </div>
   </div>
 </div>
+
+

@@ -3,6 +3,5 @@ class PagesController < ApplicationController
   def home
     render layout: "application_landing_page"
   end
-  def camera
-  end
+
 end

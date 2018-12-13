@@ -90,7 +90,7 @@ photo_urls = [ 'https://res.cloudinary.com/mmg420cloud/image/upload/v1544617030/
 end
 puts 'Created 500 new photos...'
 
-tags = %w[ dog house star phone girl men t-shirt shirt laptop headphones cup jacket face backpack cable food bottle]
+tags = %w[ dog house star phone girl men t-shirt shirt laptop headphones cup jacket face backpack cable food bottle bride hair]
 
 tags.each do |arr|
   tag_new = Tag.create(
