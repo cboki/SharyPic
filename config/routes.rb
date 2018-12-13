@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :events do
     collection do
+      get 'search', to: 'events#search'
       get 'nearby', to: 'events#nearby'
     end
     resources :photos, only: [:create, :show, :destroy]

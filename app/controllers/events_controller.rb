@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :nearby]
-  skip_after_action :verify_authorized, only: :nearby
+  skip_before_action :authenticate_user!, only: [:index, :show, :nearby, :search]
+  skip_after_action :verify_authorized, only: [:nearby, :search]
   def index
     @events = policy_scope(Event)
     # policy_scope(Event) .addOtherMethods
@@ -38,14 +38,19 @@ class EventsController < ApplicationController
     # authorize @event
   end
 
+  def search
+  end
+
   def nearby
-    latitude = params[:lat]
-    longitude = params[:lon]
-    @events = Event.near([latitude, longitude], 1)
+    @latitude = params[:lat].to_f
+    @longitude = params[:lon].to_f
+    @accuracy = params[:acc].to_i
+
+    @events = Event.near([@latitude, @longitude], 1)
 
     if @events.any?
       respond_to do |format|
-        format.json { render json: @events } # <-- will render `app/views/events/nearby.js.erb`
+        format.json # { render json: @events } <-- will render `app/views/events/nearby.js.erb`
       end
     end
   end
