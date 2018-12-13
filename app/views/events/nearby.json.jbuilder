@@ -4,4 +4,4 @@ json.position do
   json.accuracy @accuracy
 end
 
-json.events @events, :name, :location, :distance
+json.events @events, :id, :name, :location, :distance
