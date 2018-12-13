@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :nearby]
-  skip_after_action :verify_authorized, only: :nearby
+  skip_before_action :authenticate_user!, only: [:index, :show, :nearby, :search]
+  skip_after_action :verify_authorized, only: [:nearby, :search]
   def index
     @events = policy_scope(Event)
     # policy_scope(Event) .addOtherMethods
@@ -36,6 +36,9 @@ class EventsController < ApplicationController
 
   def destroy
     # authorize @event
+  end
+
+  def search
   end
 
   def nearby
