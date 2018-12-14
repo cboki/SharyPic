@@ -1,10 +1,29 @@
 .event-card {
-  position: relative;
+  background-color: white;
+  display: flex;
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+  margin:30px;
+  justify-content: space-around;
 }
 
+.event-card h2{
+margin: 0px;
+padding: 0px;
+}
+.event-card h3{
+margin: 0px;
+}
+
+.event-card-info {
+  width:150px;
+}
 
 .event-card-avatar {
-  position: absolute;
-  right: 40px;
-  top: 10px;
+  text-align: center;
 }
+.photo img {
+  object-fit: cover;
+  width: 100%;
+}
+
