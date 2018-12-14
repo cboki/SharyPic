@@ -1,0 +1,40 @@
+<div class="col-xs-12 col-sm-4 card">
+  <div class="row inline">
+    <li><i class="fas fa-arrow-left"></i></li>
+    <li><h2>Photo</h2></li>
+  </div>
+</div>
+
+<div class="row">
+  <%= image_tag(@photo.file, class: "main-image")%>
+</div>
+
+<div class="col-xs-12 col-sm-4 card">
+  <div class="row inline">
+    <li><i class="far fa-heart"></i></li>
+    <li><i class="far fa-comment"></i></li>
+    <li><p class="btn btn-primary right"> Download Picture!</p></li>
+
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <% @photo.photo_tags.each do |tag| %>
+      <%= tag.tag.name %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <% @photo.comments.each do |comment| %>
+          <li><%= comment.content %></li>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
