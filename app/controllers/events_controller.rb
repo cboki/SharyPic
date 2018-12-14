@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.all
     @event = authorize Event.find(params[:id])
+    @eventguest = EventGuest.new
   end
 
   def new
