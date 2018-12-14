@@ -1,7 +1,9 @@
 function fileUploader() {
 
  var myUploadWidget;
-    document.getElementById("upload_widget_opener").addEventListener("click", function() {
+
+     if (document.getElementById("upload_widget_opener"))
+          document.addEventListener("DOMContentLoaded", function() {
         myUploadWidget = cloudinary.openUploadWidget({
                 cloudName: "mmg420cloud",
                 uploadPreset: "bp7yx9sg",
