@@ -1,28 +1,36 @@
 <div class="container">
-      <div class="event-card">
-            <div class="event-card-info">
-              <h3>Event: <%= @event.name %></h3>
-              <h3>Location: <%= @event.location  %> </h3>
-              <h3>Date: <%= @event.start_date %> <%= @event.end_date  %> </h3>
-            </div>
-            <div class="event-card-like">
-              <h3>photos: <%= @event.photos.count%></h3>
-              <h3>likes: <%= @event.likes.count%></h3>
-              <h3>comments: <%= @event.photo_comments.count %></h3>
-            </div>
-            <div class="event-card-avatar">
-              <h3><%= image_tag(User.find(@event.user_id).photo, :style=>'height:60px; width:60px; border-radius:50px;') %></h3>
-              <h3>creator</h3>
-            </div>
-      </div>
+  <div class="event-card">
+    <div class="event-card-info">
+      <h3>Event: <%= @event.name %></h3>
+      <h3>Location: <%= @event.location  %> </h3>
+      <h3>Date: <%= @event.start_date %> <%= @event.end_date  %> </h3>
+    </div>
+    <div class="event-card-like">
+      <h3>photos: <%= @event.photos.count%></h3>
+      <h3>likes: <%= @event.likes.count%></h3>
+      <h3>comments: <%= @event.photo_comments.count %></h3>
+    </div>
+    <div class="event-card-avatar">
+      <h3><%= image_tag(User.find(@event.user_id).photo, :style=>'height:60px; width:60px; border-radius:50px;') %></h3>
+      <h3>creator</h3>
+    </div>
+  </div>
+  <% if current_user.is_not_guest?(@event) %>
+  <div class="row">
+    <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
+    <%= f.submit "Join Event!", class: "btn btn-primary" %>
+    <% end %>
+    <% end %>
+  </div>
+
   <div class="gallery">
     <div class="row">
       <% @event.photos.each do |photo|  %>
-        <div class="col-xs-4 col-md3">
-          <div class="photo">
+      <div class="col-xs-4 col-md3">
+        <div class="photo">
           <%= cl_image_tag(photo.file) %>
-          </div>
         </div>
+      </div>
       <% end %>
     </div>
   </div>
