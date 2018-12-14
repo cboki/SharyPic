@@ -36,7 +36,7 @@ github_names = %w[welan125 BenDu89 carolinalemos sisserian kauredo UpClelia cbok
 end
 puts 'Created 50 new users...'
 
-PLACES = ['Praça do Comerçio, Lisboa', 'Tour Eiffel, Paris', 'Place de la Concorde, Paris', 'Avenida Paulista, Sao Paulo',
+PLACES = ['Praça do Comerçio, Lisboa', 'Rua Heliodoro Salgado 10, Lisboa', 'Rua andrade, Lisboa', 'Avenida Paulista, Sao Paulo',
           'Avenida Atlantica, Rio de Janeiro', 'Avenida Almirante Reis, Lisboa', 'Rua Augusta, Lisboa', 'Cais do Sodré, Lisboa',
           'Rua de Sao Paulo, Lisboa', 'Avenida da Liberdade, Lisboa']
 
@@ -90,7 +90,7 @@ photo_urls = [ 'https://res.cloudinary.com/mmg420cloud/image/upload/v1544617030/
 end
 puts 'Created 500 new photos...'
 
-tags = %w[ dog house star phone girl men t-shirt shirt laptop headphones cup jacket face backpack cable food bottle]
+tags = %w[ dog house star phone girl men t-shirt shirt laptop headphones cup jacket face backpack cable food bottle bride hair]
 
 tags.each do |arr|
   tag_new = Tag.create(

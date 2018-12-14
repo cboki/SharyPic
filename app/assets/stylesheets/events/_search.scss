@@ -1,0 +1,28 @@
+#user-position {
+  font-size: 10px;
+}
+
+#events-nearby {
+}
+
+.result {
+  position: relative;
+}
+
+.event-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.event-location {
+ font-size: 12px;
+ color: rgba(0, 0, 0, 0.4);
+}
+
+.event-distance {
+  position: absolute;
+  top: 6px;
+  right: 0px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+}

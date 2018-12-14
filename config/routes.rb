@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/camera', to: 'pages#camera'
+  resources :photos, only: [:create]
+
+  get '/googleApi', to: 'photos#googleApi'
+
+
 
   resources :users, only: [] do
     resources :comments, only: [:new, :create]
@@ -9,9 +14,10 @@ Rails.application.routes.draw do
 
   resources :events do
     collection do
+      get 'search', to: 'events#search'
       get 'nearby', to: 'events#nearby'
     end
-    resources :photos, only: [:new, :create, :show, :destroy]
+    resources :photos, only: [:create, :show, :destroy]
   end
 
 

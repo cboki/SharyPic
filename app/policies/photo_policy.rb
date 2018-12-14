@@ -20,5 +20,9 @@ class PhotoPolicy < ApplicationPolicy
       record.user == user
     end
 
+    def googleApi?
+      true
+    end
+
   end
 end

@@ -21,6 +21,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'faker'
+gem 'google-api-client'
+gem 'google-cloud-vision'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

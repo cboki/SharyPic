@@ -1,4 +1,5 @@
 class Photo < ApplicationRecord
+  #require "google/cloud/vision"
   belongs_to :event
   belongs_to :user
   has_many :photo_tags

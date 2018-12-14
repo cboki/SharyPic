@@ -1,2 +1,27 @@
-<p class="btn btn-success" id="search-by-location">Search events around you</p>
-<ul id="events-nearby"></ul>
+<div class="container">
+  <%= link_to "Search new event", search_events_path, class: "btn btn btn-outline-danger btn-sm center-block search-link" %>
+  <h4 class="events-block-title">Your latest event</h4>
+  <%= link_to event_path(@events.first) do %>
+  <div class="latest-event card-border">
+    <%= cl_image_tag(@events.first.photos.first.file) %>
+    <div class="latest-event-infos">
+      <%= image_tag(@events.first.creator.photo, class: "avatar-small") %>
+      <div class="lastest-event-details">
+        <p class="lastest-event-name"><%= @events.first.name %></p>
+        <p class="lastest-event-location"><%= @events.first.location %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <h4 class="events-block-title">All your events</h4>
+  <div class="all-events">
+    <% @events[1..9].each do |event| %>
+    <%= link_to event_path(event) do %>
+    <div class="event-small-card card-border">
+      <%= cl_image_tag(event.photos.first.file) %>
+      <p><%= event.name %></p>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
