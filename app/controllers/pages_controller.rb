@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :camera]
   def home
-    render layout: "application_landing_page"
+    @disable_nav = true
   end
+
 
   def camera
   end
