@@ -16,12 +16,21 @@
   <h4 class="events-block-title">All your events</h4>
   <div class="all-events">
     <% @events[1..9].each do |event| %>
-    <%= link_to event_path(event) do %>
-    <div class="event-small-card card-border">
-      <%= cl_image_tag(event.photos.first.file) %>
-      <p><%= event.name %></p>
-    </div>
+      <%= link_to event_path(event) do %>
+      <div class="event-small-card card-border">
+        <%= cl_image_tag(event.photos.first.file) %>
+        <p><%= event.name %></p>
+      </div>
+      <% end %>
     <% end %>
+  </div>
+  <div class="event-actions">
+    <%= link_to new_event_path do %>
+      <div class="pull-right">
+        <div class="create-event-button">
+          <p>Create a new event</p><i class="fas fa-plus-circle fa-2x fa-red"></i>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
