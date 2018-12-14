@@ -1,12 +1,12 @@
 <div class="container">
   <%= link_to "Search new event", search_events_path, class: "btn btn btn-outline-danger btn-sm" %>
   <h4>Latest event:</h4>
-  <p><%= @events.first.name %></p>
+  <p><%= link_to @events.first.name, event_path(@events) %></p>
 
   <%= cl_image_tag @events.first.photos.first.file %>
   <h4>All my events:</h4>
   <% @events[1..9].each do |event| %>
-  <p><%= event.name %></p>
+  <p><%=link_to event.name, event_path(@events) %></p>
 
   <% end %>
 </div>
