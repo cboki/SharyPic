@@ -1,7 +1,7 @@
 <div class="navbar-wagon ">
 
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-logo" do %>
+  <%= link_to events_path, class: "navbar-logo" do %>
     <%= image_tag "logo.png", height: 60 %>
   <% end %>
 
@@ -9,11 +9,11 @@
       <i class="fas fa-map-marker-alt fa-2x fa-red"></i>
   <% end %>
 
-  <%= link_to root_path, class: "navbar-camera" do %>
+  <%= link_to camera_path, class: "navbar-camera" do %>
       <i class="fas fa-camera fa-3x fa-red"></i>
   <% end %>
 
-  <%= link_to root_path, class: "navbar-upload" do %>
+  <%= link_to camera_path, class: "navbar-upload" do %>
       <i class="fas fa-image fa-2x fa-red"></i>
   <% end %>
 
@@ -65,8 +65,8 @@
         <li><%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
               <% end %></li>
-        <li><%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+        <li><%= link_to new_event_path do %>
+          <span><i class="fas fa-plus-circle fa-3x fa-red"></i></i> <%= t(".profile", default: "Create an Event" ) %></span>
               <% end %></li>
         <li><%= link_to "#" do %>
                 <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
