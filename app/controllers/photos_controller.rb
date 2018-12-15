@@ -1,5 +1,4 @@
 class PhotosController < ApplicationController
-
   # skip_before_action :authenticate_user!
 
   skip_before_action :authenticate_user!
@@ -10,7 +9,6 @@ class PhotosController < ApplicationController
   end
 
   def new
-
   end
 
   def create
@@ -25,33 +23,32 @@ class PhotosController < ApplicationController
     # authorize @photo
   end
 
-
   private
 
   def photo_params
     params.require(:photo).permit(:file)
+  end
 
-    def googleApi
-      image_annotator = Google::Cloud::Vision::ImageAnnotator.new
-      photo = Photo.first
-      file_name = photo.file
-      response = image_annotator.label_detection(image: file_name)
-      response.responses.each do |res|
-        res.label_annotations.each do |label|
-          in_tabel = Tag.find_by(name: label.description)
-          if in_tabel.nil?
-            @tag = Tag.new
-            @tag.name = label.description
-            @tag.save
-          end
-          tag = Tag.find_by(name: label.description)
-          @photo_tag = PhotoTag.create(
-            tag: tag,
-            photo: photo
-            )
+  def googleApi
+    image_annotator = Google::Cloud::Vision::ImageAnnotator.new
+    photo = Photo.first
+    file_name = photo.file
+    response = image_annotator.label_detection(image: file_name)
+    response.responses.each do |res|
+      res.label_annotations.each do |label|
+        in_tabel = Tag.find_by(name: label.description)
+        if in_tabel.nil?
+          @tag = Tag.new
+          @tag.name = label.description
+          @tag.save
         end
+        tag = Tag.find_by(name: label.description)
+        @photo_tag = PhotoTag.create(
+          tag: tag,
+          photo: photo
+          )
       end
-    # need to add a redircet to the photopage
     end
+    # need to add a redircet to the photopage
   end
 end
