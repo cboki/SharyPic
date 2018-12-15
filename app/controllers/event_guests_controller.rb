@@ -10,6 +10,8 @@ class EventGuestsController < ApplicationController
       user: @current_user,
       event: @event
     )
+    @user.active_event_id = @event.id
+    flash[:notice] = 'New event successfully joined and now active' if @user.save
     redirect_to event_path(@event)
   end
 end
