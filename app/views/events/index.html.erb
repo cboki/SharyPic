@@ -17,11 +17,11 @@
     <% @events[1..9].each do |event| %>
     <% if event.photos.first != nil %>
       <%= link_to event_path(event) do %>
-      <% end %>
       <div class="event-small-card card-border">
         <%= cl_image_tag(event.photos.first.file) %>
         <p><%= event.name %></p>
       </div>
+      <% end %>
       <% end %>
     <% end %>
   </div>
