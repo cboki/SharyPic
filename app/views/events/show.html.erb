@@ -20,10 +20,10 @@
     <%= f.submit "Join Event!", class: "btn btn-danger" %>
     <% end %>
   </div>
-    <% end %>
+  <% else %>
   <div class="gallery">
     <div class="row">
-      <% @event.photos.each do |photo|  %>
+      <% @event.photos.each do |photo| %>
         <%= link_to event_photo_path(@event, photo) do %>
           <div class="col-xs-4 col-md3">
             <div class="photo">
@@ -34,5 +34,6 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 </div>
 
