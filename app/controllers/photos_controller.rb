@@ -13,10 +13,14 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    @photo.user = current_user
-    @photo.event = Event.last
-    @photo.save
     authorize @photo
+    @photo.user = current_user
+    @photo.event = Event.find(current_user.active_event_id)
+    if @photo.save
+      redirect_to event_path(@photo.event)
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -46,7 +50,7 @@ class PhotosController < ApplicationController
         @photo_tag = PhotoTag.create(
           tag: tag,
           photo: photo
-          )
+        )
       end
     end
     # need to add a redircet to the photopage
