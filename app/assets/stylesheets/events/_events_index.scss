@@ -2,8 +2,25 @@
   font-weight: bold;
   color: $red;
 }
-
 .all-events {
   display: flex;
   overflow-x: auto;
+}
+.no-login-card {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  text-align: center;
+  font-weight:lighter;
+}
+.login {
+  display: flex;
+  justify-content: space-around;
+  margin-top:20px;
+}
+.event-actions {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  padding-top: 20px;
 }
