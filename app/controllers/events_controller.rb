@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   skip_after_action :verify_authorized, only: [:nearby, :search]
   def index
     @events = policy_scope(Event)
-    if !current_user.nil?
+    if !current_user.nil? && !current_user.active_event_id.nil?
       @active_event = policy_scope(Event).find(current_user.active_event_id)
       @latest_event = policy_scope(Event).find(current_user.events.last.id)
     end
