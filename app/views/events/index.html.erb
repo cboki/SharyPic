@@ -1,7 +1,7 @@
 
 <div class="mg-container">
 <div class="container">
-  <% if current_user.nil? %>
+  <% if current_user.nil? || current_user.active_event_id.nil? %>
   <div class="flex-container">
     <div class="no-login-card">
       <div class="no-login info-box">
@@ -38,7 +38,7 @@
   <div class="latest-event card-border">
     <%= cl_image_tag(@active_event.photos.first.file) %>
     <div class="latest-event-infos">
-      <%= image_tag(@active_event.creator.photo, class: "avatar-small") %>
+     <%= image_tag(@active_event.creator.photo, class: "avatar-small") %>
       <div class="lastest-event-details">
         <p class="lastest-event-name"><%= @active_event.name %></p>
         <p class="lastest-event-location"><%= @active_event.location %></p>
