@@ -47,7 +47,7 @@
   <% if current_user.active_event_id == current_user.events.last.id %>
   <h4 class="events-block-title">All your events</h4>
   <div class="all-events">
-    <% @events[1..9].each do |event| %>
+    <% current_user.events.each do |event| %>
     <% if event.photos.first != nil %>
     <%= link_to event_path(event) do %>
     <div class="event-small-card card-border">
@@ -74,7 +74,7 @@
   <% end %>
   <h4 class="events-block-title">All your events</h4>
   <div class="all-events">
-    <% @events[1..9].each do |event| %>
+    <% current_user.events.each do |event| %>
     <% if event.photos.first != nil %>
     <%= link_to event_path(event) do %>
     <div class="event-small-card card-border">
