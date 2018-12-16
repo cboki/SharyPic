@@ -7,17 +7,16 @@
   justify-content: space-around;
   margin:10px;
   border-radius:7px;
+  h2 {
+    margin: 0px;
+    padding: 0px;
+  };
+  h3 {
+    margin: 0px;
+  }
 }
 
-.event-card h2{
-margin: 0px;
-padding: 0px;
-}
-.event-card h3{
-margin: 0px;
-}
-
-.event.card-info {
+.event-card-info {
   text-align: center;
   justify-content: space-around;
 }
@@ -26,10 +25,9 @@ margin: 0px;
   display: flex;
   text-align: center;
   justify-content: space-around;
-}
-
-.event-card-like h3{
-  margin-top: 10px;
+  h3 {
+    margin-top: 10px;
+  }
 }
 
 .photo img {
@@ -42,8 +40,4 @@ margin: 0px;
 .row {
     text-align: center;
     padding-bottom: 10px;
-}
-
-.btn-primary {
- margin: 0 0 15px 0 !important;
 }
