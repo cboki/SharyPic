@@ -15,17 +15,27 @@
     height:120px;
     width: auto;
   }
+  h1 {
+    font-weight: bold;
+    font-style: italic;
+  }
+  a{
+    font-weight: bold;
+  }
+}
+.start {
+  padding: 15px;
+  border-radius: 2px;
+  margin-top: 10px;
 }
 .logo {
   display: flex;
-  padding-bottom: 30px;
   justify-content: center;
   align-items: center;
    h1 {
-    margin-top:30px;
+    margin-top:10px;
   }
 }
-
 .frame-title {
   display: flex;
   justify-content: center;
@@ -36,12 +46,11 @@
   padding: 20px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   border-radius: 3px;
-  width: 230px;
+  width: auto;
   margin: -35px auto 0 auto;
 }
 .wrapper2 {
-background-color: #f9eded;
-padding-bottom: 50px;
+background-color: white;
   h2 {
   padding: 5px;
   margin: 5px;
@@ -69,4 +78,9 @@ color: $red;
 }
 .card {
 padding: 20px;
+
+h2 {
+color: black;
+
+}
 }

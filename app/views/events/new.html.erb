@@ -1,4 +1,5 @@
 <div class="mg-container">
+  <div class="new-event-container">
 <div class="wrapper">
   <div class="container text-center">
 
@@ -6,14 +7,14 @@
 
     <%= simple_form_for [@event] do |f| %>
     <%= f.input :name %>
-    <%= f.input :location %>
-    <%= f.input :radius %>
+    <%= f.input :location %> <p>1km Radius</p>
     <%= f.input :start_date, as: :string %>
     <%= f.input :end_date, as: :string %>
-    <%= f.input :access_key %>
+
 
     <%= f.submit "Create event!", class: "btn btn-primary btn-new-event" %>
     <% end %>
   </div>
+</div>
 </div>
 </div>
