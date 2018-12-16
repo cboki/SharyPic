@@ -32,7 +32,7 @@
       <%= cl_image_tag(@active_event.photos.first.file) %>
       <div class="latest-event-infos">
         <% if !@active_event.creator.photo.nil?%>
-        <%= image_tag(@active_event.creator.photo, class: "avatar-small") %>
+        <%= cl_image_tag(@active_event.creator.photo, class: "avatar-small") %>
         <% end %>
         <div class="lastest-event-details">
           <p class="lastest-event-name"><%= @active_event.name %></p>
