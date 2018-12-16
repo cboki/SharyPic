@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <% elsif current_user.active_event_id != nil %>
+    <% elsif current_user.active_event_id != nil  %>
     <h4 class="events-block-title">Your active event</h4>
     <%= link_to event_path(@active_event) do %>
     <div class="latest-event card-border">
