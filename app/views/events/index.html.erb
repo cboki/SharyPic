@@ -1,45 +1,45 @@
 
 <div class="mg-container">
-<div class="container">
-  <% if current_user.nil? || current_user.active_event_id.nil? %>
-  <div class="flex-container">
-    <div class="no-login-card">
-      <div class="no-login info-box">
-        <div class="no-login-text">
-          <h1>Login to see your events:</h1>
+  <div class="container">
+    <% if current_user.nil? %>
+    <div class="flex-container">
+      <div class="no-login-card">
+        <div class="no-login info-box">
+          <div class="no-login-text">
+            <h1>Login to see your events:</h1>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="login">
+          <%= link_to "Login", new_user_session_path, class: "btn btn-danger login" %>
+        </div>
+        <div class="event-actions">
+          <%= link_to new_event_path do %>
+          <div class="pull-right">
+            <div class="event-button">
+              <p>New event</p><i class="fas fa-plus-circle fa-2x fa-red"></i>
+            </div>
+          </div>
+          <% end %>
+          <%= link_to search_events_path do %>
+          <div class="pull-left">
+            <div class="event-button">
+              <i class="fas fa-search fa-2x fa-red"></i><p>Search events</p>
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
     </div>
-    <div class="actions">
-      <div class="login">
-        <%= link_to "Login", new_user_session_path, class: "btn btn-danger login" %>
-      </div>
-      <div class="event-actions">
-        <%= link_to new_event_path do %>
-        <div class="pull-right">
-          <div class="event-button">
-            <p>New event</p><i class="fas fa-plus-circle fa-2x fa-red"></i>
-          </div>
-        </div>
-        <% end %>
-        <%= link_to search_events_path do %>
-        <div class="pull-left">
-          <div class="event-button">
-            <i class="fas fa-search fa-2x fa-red"></i><p>Search events</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <% else %>
-  <h4 class="events-block-title">Your active event</h4>
-  <%= link_to event_path(@active_event) do %>
-  <div class="latest-event card-border">
-    <%= cl_image_tag(@active_event.photos.first.file) %>
-    <div class="latest-event-infos">
-     <%= image_tag(@active_event.creator.photo, class: "avatar-small") %>
-      <div class="lastest-event-details">
+    <% elsif current_user.active_event_id != nil %>
+    <h4 class="events-block-title">Your active event</h4>
+    <%= link_to event_path(@active_event) do %>
+    <div class="latest-event card-border">
+      <%= cl_image_tag(@active_event.photos.first.file) %>
+      <div class="latest-event-infos">
+       <%= image_tag(@active_event.creator.photo, class: "avatar-small") %>
+       <div class="lastest-event-details">
         <p class="lastest-event-name"><%= @active_event.name %></p>
         <p class="lastest-event-location"><%= @active_event.location %></p>
       </div>
@@ -90,6 +90,49 @@
     </div>
     <% end %>
   </div>
-  <% end %>
-</div>
+  <% else %>
+  <h4 class="events-block-title">Your latest event</h4>
+  <%= link_to event_path(@latest_event) do %>
+  <div class="latest-event card-border">
+    <%= cl_image_tag(@latest_event.photos.first.file) %>
+    <div class="latest-event-infos">
+      <%= image_tag(@latest_event.creator.photo, class: "avatar-small") %>
+      <div class="lastest-event-details">
+        <p class="lastest-event-name"><%= @latest_event.name %></p>
+        <p class="lastest-event-location"><%= @latest_event.location %></p>
+      </div>
+    </div>
   </div>
+  <% end %>
+  <h4 class="events-block-title">All your events</h4>
+  <div class="all-events">
+    <% current_user.events.each do |event| %>
+    <% if event.photos.first != nil %>
+    <%= link_to event_path(event) do %>
+    <div class="event-small-card card-border">
+      <%= cl_image_tag(event.photos.first.file) %>
+      <p><%= event.name %></p>
+    </div>
+    <% end %>
+    <% end %>
+    <% end %>
+  </div>
+  <% end %>
+  <div class="event-actions">
+    <%= link_to new_event_path do %>
+    <div class="pull-right">
+      <div class="event-button">
+        <p>New event</p><i class="fas fa-plus-circle fa-2x fa-red"></i>
+      </div>
+    </div>
+    <% end %>
+    <%= link_to search_events_path do %>
+    <div class="pull-left">
+      <div class="event-button">
+        <i class="fas fa-search fa-2x fa-red"></i><p>Search events</p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>
