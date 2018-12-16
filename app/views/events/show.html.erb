@@ -18,9 +18,6 @@
             <p><i class="fas fa-heart"></i> likes: <%= @event.likes.count%></p>
             <p><i class="far fa-comment"></i> comments: <%= @event.photo_comments.count %></p>
           </div>
-          <% if current_user.nil? %>
-          <% redirect_to new_user_session_url %>
-          <% end %>
   <% if current_user.is_not_guest?(@event) %>
   <div class="row">
     <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
