@@ -1,23 +1,30 @@
-
 <div class="mg-container">
   <div class="container">
     <% if current_user.nil? %>
-    <div class="flex-container">
+    <div class="flex-container infobox">
       <div class="no-login-card">
         <div class="no-login info-box">
           <div class="no-login-text">
-            <h1>Login to see your events:</h1>
+            <h1>Please Login to see your events</h1>
           </div>
         </div>
       </div>
       <div class="actions">
         <div class="login">
-          <%= link_to "Login", new_user_session_path, class: "btn btn-danger login" %>
+          <%= link_to "LOGIN", new_user_session_path, class: "btn btn-danger login" %>
         </div>
       </div>
     </div>
     <% elsif current_user.active_event_id.nil? || @latest_event.photos.empty?  %>
-    <div><p>Shar photos with your friends, Join or Create an Event</p></div>
+    <div class="flex-container infoboxno">
+      <div class="no-login-card">
+        <div class="no-login info-box">
+          <div class="no-login-text">
+            <p>There are currently no photos in your album, be the first one to share a nice memory</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <% else %>
     <h4 class="events-block-title">Your active event</h4>
     <%= link_to event_path(@active_event) do %>
