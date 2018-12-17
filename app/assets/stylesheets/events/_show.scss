@@ -1,32 +1,42 @@
 .event-card {
   background-color: white;
   display: flex;
-  padding: 20px;
+  padding: 5px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
   margin:30px 30px 15px 30px;
   justify-content: space-around;
   margin:10px;
   border-radius:7px;
+
   h2 {
     margin: 0px;
     padding: 0px;
-  };
-  h3 {
-    margin: 0px;
   }
 }
 
+.event-card-avatar {
+  display: flex;
+ flex-direction: column;
+ align-items: center;
+
+}
+
 .event-card-info {
-  text-align: center;
-  justify-content: space-around;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+justify-content: center;
+
 }
 
 .event-card-like {
   display: flex;
   text-align: center;
+  padding: 15px;
   justify-content: space-around;
-  h3 {
-    margin-top: 10px;
+  h2 {
+    margin: 0px;
+    padding: 10px 15px 10px 15px;
   }
 }
 
