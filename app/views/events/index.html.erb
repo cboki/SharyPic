@@ -47,7 +47,7 @@
     <div class="latest-event card-border">
       <%= cl_image_tag(@latest_event.photos.first.file) %>
       <div class="latest-event-infos">
-        <%= image_tag(@latest_event.creator.photo, class: "avatar-small") %>
+        <%= cl_image_tag(@latest_event.creator.photo, class: "avatar-small") %>
         <div class="lastest-event-details">
           <p class="lastest-event-name"><%= @latest_event.name %></p>
           <p class="lastest-event-location"><%= @latest_event.location %></p>
