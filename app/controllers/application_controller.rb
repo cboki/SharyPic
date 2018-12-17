@@ -4,14 +4,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protect_from_forgery with: :exception
-
-  def respond_modal_with(*args, &blk)
-    options = args.extract_options!
-    options[:responder] = ModalResponder
-    respond_with *args, options, &blk
-  end
-
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:photo, :photo_cache])
