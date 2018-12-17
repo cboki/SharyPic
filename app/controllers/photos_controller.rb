@@ -16,8 +16,8 @@ class PhotosController < ApplicationController
     authorize @photo
     @photo.user = current_user
     @photo.event = Event.find(current_user.active_event_id)
-    if @photo.save
-      redirect_to event_path(@photo.event)
+    if @photo.save!
+      render json: { event_id: @photo.event_id }
     else
       render :new
     end

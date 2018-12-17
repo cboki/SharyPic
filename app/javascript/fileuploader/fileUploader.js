@@ -37,9 +37,6 @@ function fileUploader() {
                 }
             },
             function(error, result) {
-
-                //Step 2.3:  Listen to 'success'
-
                 if (result.event === "success") {
                   var data = new FormData;
                   data.append('photo[file]', result.info.secure_url);
@@ -51,17 +48,15 @@ function fileUploader() {
                       },
                       credentials: 'same-origin'
                     })
-
-
-                    //Step 2.4:  Call the .close() method in order to close the widget
-
+                  .then((resp) => resp.json())
+                  .then(function(response) {
                     myUploadWidget.close();
+                    window.location.replace(`/events/${response.event_id}`);
+                  })
                 }
             });
     }, false);
-
-    //Step 2.2:  Call the .open() method in order to open the widget
-
 }
 
 export { fileUploader };
+

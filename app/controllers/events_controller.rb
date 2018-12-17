@@ -28,7 +28,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.creator = current_user
     authorize @event
-    if @event.save
+    current_user.active_event_id = @event.id
+    if @event.save!
+    current_user.active_event_id = @event.id
       redirect_to event_path(@event)
     else
       render :new
