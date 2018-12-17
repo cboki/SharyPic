@@ -6,6 +6,7 @@ class PhotosController < ApplicationController
 
   def show
     @photo = authorize Photo.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
