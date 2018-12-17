@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create]
     resources :events, only: [] do
       resources :event_guests, only: [:create]
+      resources :likes, only: [:create, :new]
     end
   end
 
@@ -20,7 +21,9 @@ Rails.application.routes.draw do
       get 'search', to: 'events#search'
       get 'nearby', to: 'events#nearby'
     end
-    resources :photos, only: [:create, :show, :destroy]
+    resources :photos, only: [:create, :show, :destroy] do
+      get '/like', to: 'likes#like'
+    end
   end
 
 
