@@ -7,37 +7,43 @@
       <% end %>
     </div>
   </div>
-    <%= image_tag(@photo.file, class: "main-image")%>
-  </div>
-  <div class="col-xs-12 col-sm-4 card white">
-    <div class="row inline">
-      <div class="list-inline">
-        <li><i class="far fa-heart icons"></i></li>
+  <%= image_tag(@photo.file, class: "main-image")%>
+</div>
+<div class="col-xs-12 col-sm-4 card white">
+  <div class="row inline">
+    <div class="list-inline">
+        <li><%= link_to event_photo_like_path(@photo.event, @photo) do %>
+          <% if current_user.is_liking?(@photo) %>
+            <i class="fas fa-heart" id="like-icon"></i>
+          <% else %>
+            <i class="far fa-heart" id="like-icon"></i>
+          <% end %></li>
         <li><%= @photo.likes.count  %></li>
-        <li><i class="far fa-comment icons"></i></li>
-        <li> <%= @photo.comments.count  %></li>
+        <% end %>
+      <li><i class="far fa-comment icons"></i></li>
+      <li> <%= @photo.comments.count  %></li>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="tags">
+        <% @photo.photo_tags.each do |tag| %>
+        <%= tag.tag.name %>
+        <% end %>
       </div>
     </div>
   </div>
-  <div class="wrapper">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <div class="tags">
-          <% @photo.photo_tags.each do |tag| %>
-          <%= tag.tag.name %>
-          <% end %>
-        </div>
-      </div>
+</div>
+<div class="wrapper">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <% @photo.comments.each do |comment| %>
+      <li><%= comment.content %></li>
     </div>
+    <% end %>
   </div>
-  <div class="wrapper">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <% @photo.comments.each do |comment| %>
-        <li><%= comment.content %></li>
-      </div>
-      <% end %>
-    </div>
-  </div>
+</div>
 </div>
 </div>
