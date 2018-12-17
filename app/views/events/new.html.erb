@@ -1,20 +1,22 @@
-<div class="mg-container">
-  <div class="new-event-container">
-<div class="wrapper">
-  <div class="container text-center">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
 
-    <h1>Create a new Event</h1>
+      <h1>Create a new event</h1>
+      <%= simple_form_for @event do |f| %>
+        <div class="form-inputs">
+          <%= f.input :name, required: false, autofocus: true , placeholder: "Write the name of your event" %>
+          <%= f.input :location, required: false, autofocus: true , placeholder: "Where does your event take place ?"  %>
+         <!-- <%= f.input :radius %>-->
+          <%= f.input :start_date, as: :string %>
+          <%= f.input :end_date, as: :string %>
+          <!-- <%= f.input :access_key %>> -->
+        </div>
 
-    <%= simple_form_for [@event] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :location %> <p>1km Radius</p>
-    <%= f.input :start_date, as: :string %>
-    <%= f.input :end_date, as: :string %>
-
-
-    <%= f.submit "Create event!", class: "btn btn-primary btn-new-event" %>
-    <% end %>
+        <div class="form-actions">
+        <%= f.button :submit, "create event", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
-</div>
 </div>
