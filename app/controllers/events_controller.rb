@@ -50,6 +50,9 @@ class EventsController < ApplicationController
   end
 
   def search
+    if params[:query].present?
+      @events = policy_scope(Event).where("name ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def nearby

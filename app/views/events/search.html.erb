@@ -1,7 +1,33 @@
 <div class="container">
   <div class= "btn btn btn-outline-danger btn-sm center-block"><i class="fas fa-arrow-circle-left"></i>
-  <%= link_to "Go back to my events", events_path %></div>
-  <p class="btn btn-danger btn-sm center-block" id="search-by-location">Near my current location</p>
-  <p id="user-position"></p>
-  <div id="events-nearby"></div>
-</div>
+    <%= link_to "Go back to my events", events_path %></div>
+
+
+    <div class="searches list-inline">
+      <div id="search-by-location" class="btn btn-primary btn-danger">
+        <span class="glyphicon glyphicon-map-marker"></span>Search near me </div>
+        <p id="user-position"></p>
+        <p><strong>OR</strong></p>
+        <div class="search-by-name">
+          <%= form_tag search_events_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+            placeholder: "Search by name"
+            %>
+            <% end %>
+          </div>
+        </div>
+        <% if !@events.nil? %>
+        <div class='result'>
+          <% @events.each do |event| %>
+          <div class="event-name">
+            <p><%= link_to event.name, event_path(event) %></p>
+          </div>
+          <div class="event-location">
+            <%= event.location %></div>
+            <% end %>
+          </div>
+          <% end %>
+          <div id="events-nearby"></div>
+        </div>
