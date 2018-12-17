@@ -20,7 +20,7 @@
       <div class="no-login-card">
         <div class="no-login info-box">
           <div class="no-login-text">
-            <p>There are currently no photos in your album, be the first one to share a nice memory</p>
+            <%= render 'events/noevent' %>
           </div>
         </div>
       </div>
@@ -70,6 +70,8 @@
       <% end %>
     </div>
     <% end %>
+
+
       <div class="event-actions">
           <%= link_to new_event_path do %>
           <div class="pull-right">
