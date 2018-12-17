@@ -1,5 +1,6 @@
 import 'bootstrap';
 import { getUserLocationOnClick } from '../location/getPosition';
+import { algoliaSearchBar } from '../algoliaplaces/algoliasearch';
 
 import 'flatpickr/dist/flatpickr.css';
 import { datePicker } from '../components/_datepicker';
@@ -10,3 +11,4 @@ getUserLocationOnClick();
 datePicker();
 fileUploader();
 like();
+algoliaSearchBar();

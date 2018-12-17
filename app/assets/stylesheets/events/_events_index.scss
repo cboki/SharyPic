@@ -18,24 +18,20 @@
 .login {
   display: flex;
   justify-content: space-around;
-  a{
+  a {
     padding: 15px;
     font-weight: bold;
     margin-bottom: 250px;
   }
 }
-.event-actions {
-  text-align: center;
-  width: 80%;
-  margin: 0 auto;
-}
 .lastest-event-name{
   font-weight: lighter;
-  color: $gray
+  color: $gray;
 }
-.mg-container {
-  width: 100vw;
-  height: calc(100vh + 90px);
+.subcontainer {
+  width: 95vw;
+  margin: 0 auto;
+  height: 150vh;
 }
 .infoboxno {
   margin-top: 50%;

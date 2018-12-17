@@ -1,42 +1,56 @@
 <div class="container">
-      <div class="event-card">
-        <div class="event-card-avatar">
-          <% if @event.creator.photo.nil? %>
+  <div class="subcontainer">
+    <div class="event-card">
+      <div class="event-card-avatar">
+        <% if @event.creator.photo.nil? %>
           <%= image_tag("default_avatar.png", :style=>'height:60px; width:60px; border-radius:50px;') %>
-          <% else %>
-          <h3><%= cl_image_tag(@event.creator.photo, :style=>'height:60px; width:60px; border-radius:50px;') %></h3>
-          <% end %>
-        </div>
-        <div class="event-card-info">
-          <p><%= @event.name.upcase %></p>
-          <p> <%= @event.location  %> </p>
-          <p><%= @event.start_date %> <%= @event.end_date  %></p>
-        </div>
+        <% else %>
+          <%= cl_image_tag(@event.creator.photo, :style=>'height:60px; width:60px; border-radius:50px;') %>
+        <% end %>
+        <h2><strong>creator</strong></h2>
       </div>
-          <div class="event-card-like">
-            <p><i class="far fa-image"></i> photos: <%= @event.photos.count%></p>
-            <p><i class="fas fa-heart"></i> likes: <%= @event.likes.count%></p>
-            <p><i class="far fa-comment"></i> comments: <%= @event.photo_comments.count %></p>
-          </div>
-  <% if current_user.is_not_guest?(@event) %>
-  <div class="row">
-    <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
-    <%= f.submit "Join Event!", class: "btn btn-danger" %>
-    <% end %>
-  </div>
-  <% else %>
-  <div class="gallery">
+      <div class="event-card-info">
+        <h2><strong><%= @event.name.upcase %></strong></h2>
+        <h2> <%= @event.location  %> </h2>
+        <h2><%= @event.start_date.strftime( "%a %e %b %Y") %>
+        <% if !@event.end_date.nil? %>
+          <%= @event.end_date.strftime( "%a %e %b %Y")  %>
+        <% end %>
+        </h2>
+      </div>
+    </div>
+    <div class="event-card-like">
+      <h2><i class="far fa-image"></i> photos <%= @event.photos.count%></h2>
+      <h2><i class="fas fa-heart"></i> likes <%= @event.likes.count%></h2>
+      <h2><i class="far fa-comment"></i> comments <%= @event.photo_comments.count %></h2>
+    </div>
+    <% if current_user.active_event_id != @event.id %>
     <div class="row">
-      <% @event.photos.each do |photo| %>
-      <%= link_to event_photo_path(@event, photo) do %>
-      <div class="col-xs-4 col-md3">
-        <div class="photo">
-          <%= cl_image_tag(photo.file) %>
-        </div>
-      </div>
-      <% end %>
+      <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
+        <%= f.submit "Upload photos to this event", class: "btn btn-danger" %>
       <% end %>
     </div>
+    <% end %>
+    <% if current_user.is_not_guest?(@event) %>
+      <div class="row">
+        <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
+          <%= f.submit "Join Event!", class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="gallery">
+        <div class="row">
+          <% @event.photos.each do |photo| %>
+            <%= link_to event_photo_path(@event, photo) do %>
+              <div class="col-xs-4 col-md3">
+                <div class="photo">
+                  <%= cl_image_tag(photo.file) %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
