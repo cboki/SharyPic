@@ -1,53 +1,35 @@
 <div class="container">
   <div class="subcontainer">
-    <!-- PUTS THE CODE HERE TO HAVE SMALL MARGIN -->
-</div>
-
-  <div class="col-xs-12 col-sm-4 card">
-    <div class="row inline">
-      <%= link_to event_path(@photo.event) do%>
-        <li><i class="fas fa-arrow-left"></i></li>
-        <li><h1>Back to the Event</h1></li>
-      <% end %>
+    <div class="photo-card">
+      <div class="photo-image">
+        <%= cl_image_tag(@photo.file, class: "main-image")%>
+        <div class="photo-info">
+          <div class="row list-inline">
+          <%= link_to event_photo_like_path(@photo.event, @photo) do %>
+          <div class="list-inline block">
+            <% if current_user.is_liking?(@photo) %>
+            <li><i class="fas fa-heart icons" id="like-icon"></i></li>
+            <% else %>
+            <li><i class="far fa-heart icons" id="like-icon"></i></li>
+            <% end %>
+            <li><%= @photo.likes.count %></li>
+          </div>
+          <% end %>
+          <li><i class="far fa-comment icons"></i></li>
+          <li><%= @photo.comments.count  %></li>
+        </div>
     </div>
   </div>
-  <%= cl_image_tag(@photo.file, class: "main-image")%>
-</div>
-<div class="col-xs-12 col-sm-4 card white">
-  <div class="row inline">
-    <div class="list-inline">
-        <li><%= link_to event_photo_like_path(@photo.event, @photo) do %>
-          <% if current_user.is_liking?(@photo) %>
-            <i class="fas fa-heart" id="like-icon"></i>
-          <% else %>
-            <i class="far fa-heart" id="like-icon"></i>
-          <% end %></li>
-        <li><%= @photo.likes.count  %></li>
-        <% end %>
-      <li><i class="far fa-comment icons"></i></li>
-      <li> <%= @photo.comments.count  %></li>
-    </div>
-  </div>
-</div>
-<div class="wrapper">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="tags">
+      <div class="photo-tags">
         <% @photo.photo_tags.each do |tag| %>
-        <%= tag.tag.name %>
+        <h1><%= tag.tag.name %></h1>
+        <% end %>
+      </div>
+      <div class="photo-comments list-inline">
+        <% @photo.comments.each do |comment| %>
+        <li><%= comment.content %></li>
         <% end %>
       </div>
     </div>
   </div>
-</div>
-<div class="wrapper">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <% @photo.comments.each do |comment| %>
-      <li><%= comment.content %></li>
-    </div>
-    <% end %>
-  </div>
-</div>
-</div>
 </div>

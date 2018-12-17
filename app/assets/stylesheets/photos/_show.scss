@@ -1,14 +1,3 @@
-.row li {
-  display: inline-block;
-  margin-top: 0px;
-  margin-left: 10px;
-  h1 {
-    font-weight: bold;
-  }
-}
-.inline {
-  margin-top: 0px;
-}
 .main-image {
   display: block;
   margin-left: auto;
@@ -17,17 +6,29 @@
   height: 40vh;
   object-fit: scale-down;
 }
-.white {
+.photo-info {
+  position: relative;
   background-color: white;
+  display: flex;
+  align-items: flex-start;
+  height: auto;
 }
-.download {
+ .photo-tags {
+  width: 80%;
+  margin: 0 auto;
+ }
+ .photo-comments {
+  width: 90%;
+ }
+.right {
   position: absolute;
   right: 10px;
-  bottom: 10px;
+  top:0px;
 }
-.tags {
-  padding: 20px;
+.icons {
+  margin-left:10px;
 }
-.card {
-  padding: 5px;
+.block {
+  display: inline-block;
 }
+
