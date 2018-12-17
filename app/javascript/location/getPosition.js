@@ -17,9 +17,9 @@ function getUserLocationOnClick() {
         .then(response => response.json())
         .then((data) => {
           console.log(data);
-          userPosition.innerText = `latitude: ${data.position.latitude}, longitude: ${data.position.longitude}, accuracy: ${data.position.accuracy}`;
+          // userPosition.innerText = `latitude: ${data.position.latitude}, longitude: ${data.position.longitude}, accuracy: ${data.position.accuracy}`;
           data.events.forEach((event) => {
-            const item = `<a href="/events/${event.id}"><div class='result'><div class="event-name">${event.name}</div><div class="event-location">${event.location}</div><div class="event-distance">${event.distance}m away</div></div></a>`;
+            const item = `<a href="/events/${event.id}"><div class='result'><div class="event-creator-avatar"><img src=${event.creator} style="height:40px; width:40px; border-radius:50px;"></div><div class="event-name">${event.name}</div><div class="event-distance">${event.distance} m away</div></div></a>`;
             eventsNearby.insertAdjacentHTML('beforeend', item);
           });
         });

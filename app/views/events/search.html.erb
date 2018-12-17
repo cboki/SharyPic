@@ -5,7 +5,7 @@
     </div>
     <div class="searches list-inline">
       <div id="search-by-location" class="btn btn-primary btn-danger">
-        <span class="glyphicon glyphicon-map-marker"></span>Search near me
+        <span class="glyphicon glyphicon-map-marker"></span> Search near me
       </div>
       <p id="user-position"></p>
       <p><strong>OR</strong></p>
@@ -19,20 +19,21 @@
         <% end %>
       </div>
     </div>
-    <% if !@events.nil? %>
-      <div class='result'>
-        <% @events.each do |event| %>
-          <div class="event-name">
-            <p><%= link_to event.name, event_path(event) %></p>
-          </div>
-          <div class="event-location">
-            <%= event.location %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
     <div id="events-nearby">
+      <% if @events.present? %>
+        <% @events.each do |event| %>
+          <%= link_to event_path(event) do %>
+            <div class='result'>
+              <div class="event-creator-avatar">
+                <%= image_tag(event.creator.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
+              </div>
+              <div class="event-name">
+                <%= event.name %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
-
