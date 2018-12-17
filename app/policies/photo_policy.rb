@@ -1,4 +1,8 @@
 class PhotoPolicy < ApplicationPolicy
+  def like?
+    true
+  end
+
   class Scope < Scope
     def resolve
       # Anyone
@@ -24,5 +28,8 @@ class PhotoPolicy < ApplicationPolicy
       true
     end
 
+    def like?
+      true
+    end
   end
 end

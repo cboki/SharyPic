@@ -1,5 +1,5 @@
-<div class="mg-container">
-  <div class="container">
+<div class="container">
+  <div class="subcontainer">
     <% if current_user.nil? %>
     <div class="flex-container infobox">
       <div class="no-login-card">
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <% elsif current_user.active_event_id.nil? || @latest_event.photos.empty?  %>
+    <% elsif current_user.active_event_id.nil? || @latest_event.nil? || @latest_event.photos.empty?   %>
     <div class="flex-container infoboxno">
       <div class="no-login-card">
         <div class="no-login info-box">
@@ -47,7 +47,7 @@
     <div class="latest-event card-border">
       <%= cl_image_tag(@latest_event.photos.first.file) %>
       <div class="latest-event-infos">
-        <%= image_tag(@latest_event.creator.photo, class: "avatar-small") %>
+        <%= cl_image_tag(@latest_event.creator.photo, class: "avatar-small") %>
         <div class="lastest-event-details">
           <p class="lastest-event-name"><%= @latest_event.name %></p>
           <p class="lastest-event-location"><%= @latest_event.location %></p>
