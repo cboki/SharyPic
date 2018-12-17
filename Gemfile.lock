@@ -308,7 +308,6 @@ DEPENDENCIES
   pundit
   rails (= 5.2.1.1)
   redis
-  responders
   sassc-rails
   simple_form
   spring
