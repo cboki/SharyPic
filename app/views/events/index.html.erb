@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <% elsif current_user.active_event_id.nil? || @latest_event.photos.empty?  %>
+    <% elsif current_user.active_event_id.nil? || @latest_event.nil? || @latest_event.photos.empty?   %>
     <div class="flex-container infoboxno">
       <div class="no-login-card">
         <div class="no-login info-box">
