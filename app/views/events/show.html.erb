@@ -12,7 +12,9 @@
       <div class="event-card-info">
         <h2><strong><%= @event.name.upcase %></strong></h2>
         <h2> <%= @event.location  %> </h2>
+        <% if !@event.end_date.nil? %>
         <h2><%= @event.start_date.strftime( "%a %e %b %Y") %>
+          <% end %>
         <% if !@event.end_date.nil? %>
           <%= @event.end_date.strftime( "%a %e %b %Y")  %>
         <% end %>
