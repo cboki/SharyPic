@@ -1,0 +1,4 @@
+<%= simple_form_for [@comment], url: user_photo_comments_path(current_user, @photo), method: :post do |form| %>
+  <%= form.input :content %>
+  <%= form.button :submit %>
+<% end %>
