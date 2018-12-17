@@ -10,4 +10,5 @@ class User < ApplicationRecord
   def is_not_guest?(event)
     !event.in?(events)
   end
+
 end

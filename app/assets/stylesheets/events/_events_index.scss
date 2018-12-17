@@ -18,12 +18,16 @@
 .login {
   display: flex;
   justify-content: space-around;
-  margin-top:20px;
+  a{
+    padding: 15px;
+    font-weight: bold;
+    margin-bottom: 250px;
+  }
 }
 .event-actions {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  padding-top: 20px;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 .lastest-event-name{
   font-weight: lighter;
@@ -31,5 +35,8 @@
 }
 .mg-container {
   width: 100vw;
-  height: 150vh;
+  height: calc(100vh + 90px);
+}
+.infoboxno {
+  margin-top: 50%;
 }
