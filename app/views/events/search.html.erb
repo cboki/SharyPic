@@ -25,7 +25,7 @@
           <%= link_to event_path(event) do %>
             <div class='result'>
               <div class="event-creator-avatar">
-                <%= image_tag(event.creator.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
+                <%= cl_image_tag(event.creator.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
               </div>
               <div class="event-name">
                 <%= event.name %>
