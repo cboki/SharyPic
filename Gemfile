@@ -22,6 +22,8 @@ gem 'webpacker'
 gem 'faker'
 gem 'google-api-client'
 gem 'google-cloud-vision'
+gem 'responders'
+gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
