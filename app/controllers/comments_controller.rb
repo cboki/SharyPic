@@ -11,9 +11,15 @@ class CommentsController < ApplicationController
     @comment.commentable = @photo
     @comment.user = current_user
     if @comment.save
-      redirect_to event_photo_path(@photo.event_id, @photo.id)
+      respond_to do |format|
+        format.html { redirect_to event_photo_path(@photo.event_id, @photo.id) }
+        format.js
+      end
     else
-      render 'photos/show'
+      respond_to do |format|
+        format.html { render "photo/new" }
+        format.js
+      end
     end
   end
 
