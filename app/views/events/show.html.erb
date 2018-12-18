@@ -44,7 +44,7 @@
         <div class="row">
           <% @event.photos.each do |photo| %>
             <%= link_to event_photo_path(@event, photo) do %>
-              <div class="col-xs-4 col-md3">
+              <div class="col-xs-6 col-md-4">
                 <div class="photo">
                   <%= cl_image_tag(photo.file) %>
                 </div>

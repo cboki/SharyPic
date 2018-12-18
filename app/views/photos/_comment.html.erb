@@ -1,4 +1,4 @@
 <%= simple_form_for [@comment], remote: true, url: user_photo_comments_path(current_user, @photo), method: :post, id: :new_comment do |form| %>
   <%= form.input :content, label: false %>
-  <%= form.button :submit %>
+  <%= form.button :submit, class: "create-comment-btn" %>
 <% end %>
