@@ -29,8 +29,8 @@ class EventsController < ApplicationController
     @event.creator = current_user
     authorize @event
     if @event.save!
-      current_user.events << @event
       current_user.active_event_id = @event.id
+      current_user.events << @event
       redirect_to event_path(@event), notice: "Your event has been successfully added."
     else
       render :new
@@ -50,6 +50,7 @@ class EventsController < ApplicationController
   end
 
   def search
+    @acevents = policy_scope(Event).pluck(:name)
     if params[:query].present?
       @events = policy_scope(Event).where("name ILIKE ?", "%#{params[:query]}%")
     end
