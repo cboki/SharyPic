@@ -25,11 +25,12 @@
         <p class="tag">#<%= tag.tag.name %></p>
       <% end %>
     </div>
-    <%= render 'photos/comment', photo: @photo, comment: @comment %>
-    <div class="photo-comments list-inline">
-      <% @photo.comments.each do |comment| %>
-        <li><%= comment.content %></li>
-      <% end %>
+      <%= render 'photos/comment', photo: @photo, comment: @comment %>
+      <div class="photo-comments list-inline" id="comments">
+        <% @photo.comments.each do |comment| %>
+        <%= render 'comments/show', comment: comment %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
