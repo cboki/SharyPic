@@ -50,6 +50,7 @@ class EventsController < ApplicationController
   end
 
   def search
+    @acevents = policy_scope(Event).pluck(:name)
     if params[:query].present?
       @events = policy_scope(Event).where("name ILIKE ?", "%#{params[:query]}%")
     end
