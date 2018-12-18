@@ -1,8 +1,4 @@
 class PhotoPolicy < ApplicationPolicy
-  def like?
-    true
-  end
-
   class Scope < Scope
     def resolve
       # Anyone
@@ -11,25 +7,25 @@ class PhotoPolicy < ApplicationPolicy
       # Owner
       # scope.wehere(user: user)
     end
+  end
 
-    def show
-      true
-    end
+  def show
+    true
+  end
 
-    def create?
-      true
-    end
+  def create?
+    true
+  end
 
-    def destroy?
-      record.user == user
-    end
+  def destroy?
+    record.user == user
+  end
 
-    def googleApi?
-      true
-    end
+  def googleApi?
+    true
+  end
 
-    def like?
-      true
-    end
+  def like?
+    true
   end
 end

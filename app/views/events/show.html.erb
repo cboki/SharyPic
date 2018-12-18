@@ -42,11 +42,17 @@
     <div class="gallery">
       <div class="row">
         <% @event.photos.each do |photo| %>
-        <%= link_to event_photo_path(@event, photo) do %>
-        <div class="col-xs-4 col-md3">
-          <div class="photo">
-            <%= cl_image_tag(photo.file) %>
+        <div>
+          <% if policy(photo).destroy? %>
+            <%= link_to "X", photo_path(photo), method: :delete %>
+          <% end %>
+          <%= link_to event_photo_path(@event, photo) do %>
+          <div class="col-xs-4 col-md3">
+            <div class="photo">
+              <%= cl_image_tag(photo.file) %>
+            </div>
           </div>
+
         </div>
         <% end %>
         <% end %>
