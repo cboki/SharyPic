@@ -13,13 +13,9 @@
   </head>
   <body>
     <%= render 'shared/topbar' unless @disable_nav  %>
-
-      <%= render 'shared/flashes' %>
-
-      <%= yield %>
-
-      <%= render 'shared/navbar' unless @disable_nav %>
-
+    <%= render 'shared/flashes' %>
+    <%= yield %>
+    <%= render 'shared/navbar' unless @disable_nav %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
