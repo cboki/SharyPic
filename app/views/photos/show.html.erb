@@ -1,36 +1,35 @@
 <div class="container">
   <div class="subcontainer">
-    <div class="photo-card">
+    <div class="photo-card card-border">
       <div class="photo-image">
         <%= cl_image_tag(@photo.file, class: "main-image")%>
-        <div class="photo-info">
-          <div class="row list-inline">
+      </div>
+      <div class="photo-info">
+        <div class="likes">
           <%= link_to event_photo_like_path(@photo.event, @photo) do %>
-          <div class="list-inline block">
             <% if current_user.is_liking?(@photo) %>
-            <li><i class="fas fa-heart icons" id="like-icon"></i></li>
+              <p><i class="fas fa-heart"></i> <%= @photo.likes.count %></p>
             <% else %>
-            <li><i class="far fa-heart icons" id="like-icon"></i></li>
+              <p><i class="far fa-heart"></i> <%= @photo.likes.count %></p>
             <% end %>
-            <li><%= @photo.likes.count %></li>
-          </div>
           <% end %>
-          <li><i class="far fa-comment icons"></i></li>
-          <li><%= @photo.comments.count  %></li>
         </div>
+        <div class="comments">
+          <p><i class="far fa-comment"></i> <%= @photo.comments.count %></p>
+        </div>
+      </div>
     </div>
-  </div>
-      <div class="photo-tags">
-        <% @photo.photo_tags.each do |tag| %>
-        <h1><%= tag.tag.name %></h1>
-        <% end %>
-      </div>
-      <%= render 'photos/comment', photo: @photo, comment: @comment %>
-      <div class="photo-comments list-inline">
-        <% @photo.comments.each do |comment| %>
+    <div class="photo-tags">
+      <p id="tag-title">Tags</p>
+      <% @photo.photo_tags.each do |tag| %>
+        <p class="tag">#<%= tag.tag.name %></p>
+      <% end %>
+    </div>
+    <%= render 'photos/comment', photo: @photo, comment: @comment %>
+    <div class="photo-comments list-inline">
+      <% @photo.comments.each do |comment| %>
         <li><%= comment.content %></li>
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
