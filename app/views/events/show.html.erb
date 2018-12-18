@@ -39,19 +39,19 @@
       <% end %>
     </div>
     <% else %>
-    <div class="gallery">
-      <div class="row">
-        <% @event.photos.each do |photo| %>
-        <%= link_to event_photo_path(@event, photo) do %>
-        <div class="col-xs-4 col-md3">
-          <div class="photo">
-            <%= cl_image_tag(photo.file) %>
-          </div>
+      <div class="gallery">
+        <div class="row">
+          <% @event.photos.each do |photo| %>
+            <%= link_to event_photo_path(@event, photo) do %>
+              <div class="col-xs-6 col-md-4">
+                <div class="photo">
+                  <%= cl_image_tag(photo.file) %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
-        <% end %>
-        <% end %>
       </div>
-    </div>
     <% end %>
   </div>
 </div>
