@@ -19,16 +19,18 @@
         </div>
       </div>
     </div>
-    <div class="photo-tags">
-      <p id="tag-title">Tags</p>
+    <div class="section">
+      <p class="section-title">Tags</p>
       <% @photo.photo_tags.each do |tag| %>
         <p class="tag">#<%= tag.tag.name %></p>
       <% end %>
     </div>
+    <div class="section">
+      <p class="section-title">Comments</p>
       <%= render 'photos/comment', photo: @photo, comment: @comment %>
-      <div class="photo-comments list-inline" id="comments">
+      <div id="comments">
         <% @photo.comments.each do |comment| %>
-        <%= render 'comments/show', comment: comment %>
+            <%= render 'comments/show', comment: comment %>
         <% end %>
       </div>
     </div>
