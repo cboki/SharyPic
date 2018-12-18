@@ -61,7 +61,7 @@ class EventsController < ApplicationController
     @longitude = params[:lon].to_f
     @accuracy = params[:acc].to_i
 
-    @events = Event.near([@latitude, @longitude], 1)
+    @events = Event.near([@latitude, @longitude], 50)
     @events.each { |event| event.distance = (event.distance * 100).to_i }
 
     if @events.any?
