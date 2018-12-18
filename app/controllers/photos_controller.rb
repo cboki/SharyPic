@@ -25,7 +25,11 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-    # authorize @photo
+    @photo = Photo.find(params[:id])
+    authorize @photo
+    @photo.destroy
+
+    redirect_to @photo.event
   end
 
   private
