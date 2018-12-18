@@ -17,6 +17,16 @@
         <div class="comments">
           <p><i class="far fa-comment"></i> <%= @photo.comments.count %></p>
         </div>
+        <% if policy(@photo).destroy? %>
+          <div class="destroy">
+            <p>
+              <%= link_to photo_path(@photo), method: :delete do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </p>
+
+          </div>
+         <% end %>
       </div>
     </div>
     <div class="section">
