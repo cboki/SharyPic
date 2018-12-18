@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [] do
+    resources :photos, only: [] do
     resources :comments, only: [:new, :create]
+  end
     resources :events, only: [] do
       resources :event_guests, only: [:create]
       resources :likes, only: [:create, :new]

@@ -16,7 +16,7 @@
           </div>
           <% end %>
           <li><i class="far fa-comment icons"></i></li>
-          <li><%= @photo.comments.count  %></li>
+          <li><%= @photo.comments.count %></li>
         </div>
     </div>
   </div>
@@ -25,9 +25,10 @@
         <h1><%= tag.tag.name %></h1>
         <% end %>
       </div>
-      <div class="photo-comments list-inline">
+      <%= render 'photos/comment', photo: @photo, comment: @comment %>
+      <div class="photo-comments list-inline" id="comments">
         <% @photo.comments.each do |comment| %>
-        <li><%= comment.content %></li>
+        <%= render 'comments/show', comment: comment %>
         <% end %>
       </div>
     </div>
