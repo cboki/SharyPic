@@ -53,17 +53,27 @@
 
 .stat-number {
   font-weight: bold;
+}
+
+#photos, #members {
+  color: rgb(255, 255, 255);
+}
+
+#likes, #comments {
   color: rgb(59, 66, 89);
 }
 
 .stat-category {
   font-weight: bold;
   font-size: 10px;
-  color: rgb(160, 164, 175);
-  background-color: rgba(0, 0, 0, 0.15);
-  border-radius: 50px;
   padding: 1px 8px;
+  border-radius: 50px;
+  color: rgb(160, 164, 175);
+  // color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.15);
 }
+
+
 .event-header-avatar {
   img {
     border: solid 6px #f4f4f4;
