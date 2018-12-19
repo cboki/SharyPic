@@ -1,5 +1,5 @@
 <div class="container fix-padding">
-  <div class="wrapper-header" style="background-image: linear-gradient(-225deg, rgba(255, 106, 0, 0.8) 10%, rgba(252, 3, 3, 0.69) 65%), url(<%= @event.photos.first.file if @event.photos.first.file.present? %>);">
+  <div class="wrapper-header" style="background-image: linear-gradient(-225deg, rgba(255, 106, 0, 0.8) 10%, rgba(252, 3, 3, 0.69) 65%), url(<%= @event.background_url %>);">
     <div class="subcontainer-header">
       <div class="event-header">
         <div class="event-header-top text-center">
@@ -24,11 +24,7 @@
             </div>
           </div>
           <div class="event-header-avatar">
-            <% if @event.photos.first.file.nil? %>
-            <%= image_tag("default_avatar.png") %>
-            <% else %>
-            <%= cl_image_tag(@event.photos.first.file) %>
-            <% end %>
+            <%= image_tag(@event.event_avatar) %>
           </div>
           <div class="event-header-bottom-right">
             <div class="stats" id="members">

@@ -13,4 +13,12 @@ class Event < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+
+  def background_url
+    self.photos.first&.file.to_s
+  end
+
+  def event_avatar
+    self.photos.first.nil? ? "default_avatar.png" : self.photos.first.file
+  end
 end
