@@ -41,10 +41,12 @@
   color: $red;
   text-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
 }
+
 .all-events {
   display: flex;
   overflow-x: auto;
 }
+
 .no-login-card {
   margin-top: 20px;
   margin-left: 20px;
@@ -53,6 +55,7 @@
   text-align: center;
   font-weight:lighter;
 }
+
 .login {
   display: flex;
   justify-content: space-around;
@@ -62,10 +65,12 @@
     margin-bottom: 250px;
   }
 }
+
 .lastest-event-name{
   font-weight: lighter;
   color: $gray;
 }
+
 .subcontainer {
   width: 95vw;
   margin: 0 auto;
