@@ -9,7 +9,7 @@ class Photo < ApplicationRecord
 
   validates :file, :event, presence: true
 
-  after_create :add_google_tags
+  #after_create :add_google_tags
 
   private
 
