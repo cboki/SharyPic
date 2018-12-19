@@ -1,72 +1,70 @@
-<div class="container fix-padding">
-  <div class="wrapper-header" style="background-image: linear-gradient(-225deg, rgba(255, 106, 0, 0.8) 10%, rgba(252, 3, 3, 0.69) 65%), url(<%= @event.background_url %>);">
-    <div class="subcontainer-header">
-      <div class="event-header">
-        <div class="event-header-top text-center">
-          <p id="event-name"><%= @event.name.upcase %></p>
-          <p><%= @event.location %> </p>
-          <% if @event.end_date.present? %>
-            <p><%= @event.start_date.strftime( "%a %e %b %Y") %></p>
-          <% end %>
-          <% if @event.end_date.present? %>
-            <p><%= @event.end_date.strftime( "%a %e %b %Y")  %></p>
-          <% end %>
+<div class="wrapper-header" style="background-image: linear-gradient(-225deg, rgba(255, 106, 0, 0.8) 10%, rgba(252, 3, 3, 0.69) 65%), url(<%= @event.background_url %>);">
+  <div class="subcontainer-header">
+    <div class="event-header">
+      <div class="event-header-top text-center">
+        <p id="event-name"><%= @event.name.upcase %></p>
+        <p><%= @event.location %> </p>
+        <% if @event.end_date.present? %>
+          <p><%= @event.start_date.strftime( "%a %e %b %Y") %></p>
+        <% end %>
+        <% if @event.end_date.present? %>
+          <p><%= @event.end_date.strftime( "%a %e %b %Y")  %></p>
+        <% end %>
+      </div>
+      <div class="event-header-bottom">
+        <div class="event-header-bottom-left">
+          <div class="stats" id="photos">
+            <p class="stat-number"><%= @event.photos.count %></p>
+            <p class="stat-category"><%= pluralize(@event.photos.count, 'photo').split(' ').last.upcase %></p>
+          </div>
+          <div class="stats" id="likes">
+            <p class="stat-number"><%= @event.likes.count %></p>
+            <p class="stat-category"><%= pluralize(@event.likes.count, 'like').split(' ').last.upcase %></p>
+          </div>
         </div>
-        <div class="event-header-bottom">
-          <div class="event-header-bottom-left">
-            <div class="stats" id="photos">
-              <p class="stat-number"><%= @event.photos.count %></p>
-              <p class="stat-category"><%= pluralize(@event.photos.count, 'photo').split(' ').last.upcase %></p>
-            </div>
-            <div class="stats" id="likes">
-              <p class="stat-number"><%= @event.likes.count %></p>
-              <p class="stat-category"><%= pluralize(@event.likes.count, 'like').split(' ').last.upcase %></p>
-            </div>
+        <div class="event-header-avatar">
+          <%= image_tag(@event.event_avatar) %>
+        </div>
+        <div class="event-header-bottom-right">
+          <div class="stats" id="members">
+            <p class="stat-number"><%= @event.users.count %></p>
+            <p class="stat-category"><%= pluralize(@event.users.count, 'member').split(' ').last.upcase %></p>
           </div>
-          <div class="event-header-avatar">
-            <%= image_tag(@event.event_avatar) %>
-          </div>
-          <div class="event-header-bottom-right">
-            <div class="stats" id="members">
-              <p class="stat-number"><%= @event.users.count %></p>
-              <p class="stat-category"><%= pluralize(@event.users.count, 'member').split(' ').last.upcase %></p>
-            </div>
-            <div class="stats" id="comments">
-              <p class="stat-number"><%= @event.photo_comments.count %></p>
-              <p class="stat-category"><%= pluralize(@event.photo_comments.count, 'comment').split(' ').last.upcase %></p>
-            </div>
+          <div class="stats" id="comments">
+            <p class="stat-number"><%= @event.photo_comments.count %></p>
+            <p class="stat-category"><%= pluralize(@event.photo_comments.count, 'comment').split(' ').last.upcase %></p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="subcontainer-gallery">
-    <% if current_user.is_not_guest?(@event) %>
-    <div class="row">
-      <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
-      <%= f.submit "Join Event!", class: "btn btn-danger" %>
-      <% end %>
-    </div>
-    <% elsif current_user.active_event_id != @event.id  %>
-    <div class="row">
-      <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
-      <%= f.submit "Upload photos to this event", class: "btn btn-danger" %>
-      <% end %>
-    </div>
-    <% else %>
-      <div class="gallery">
-        <div class="row">
-          <% @event.photos.each do |photo| %>
-            <%= link_to event_photo_path(@event, photo) do %>
-              <div class="col-xs-6 col-md-4">
-                <div class="photo">
-                  <%= cl_image_tag(photo.file) %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+</div>
+<div class="subcontainer-gallery">
+  <% if current_user.is_not_guest?(@event) %>
+  <div class="row">
+    <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
+    <%= f.submit "Join Event!", class: "btn btn-danger" %>
     <% end %>
   </div>
+  <% elsif current_user.active_event_id != @event.id  %>
+  <div class="row">
+    <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
+    <%= f.submit "Upload photos to this event", class: "btn btn-danger" %>
+    <% end %>
+  </div>
+  <% else %>
+    <div class="gallery">
+      <div class="row">
+        <% @event.photos.each do |photo| %>
+          <%= link_to event_photo_path(@event, photo) do %>
+            <div class="col-xs-6 col-md-4">
+              <div class="photo">
+                <%= cl_image_tag(photo.file) %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

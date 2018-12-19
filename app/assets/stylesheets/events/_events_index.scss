@@ -68,6 +68,5 @@
 .subcontainer {
   width: 95vw;
   margin: 0 auto;
-  height: 100vh;
-  margin-top: 60px;
+  min-height: calc(92vh - 60px);
 }
