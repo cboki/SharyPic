@@ -5,6 +5,7 @@ class PhotosController < ApplicationController
   skip_after_action :verify_authorized, only: :googleApi
 
   def show
+    @event = authorize Event.find(params[:event_id])
     @photo = authorize Photo.find(params[:id])
     @comment = Comment.new
   end

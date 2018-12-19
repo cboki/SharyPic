@@ -4,6 +4,28 @@
   height: 8vh;
 }
 
+.subcontainer-topbar {
+  width: 95vw;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.back-arrow {
+  p {
+    font-size: 16px;
+    color: white;
+    margin: 0px;
+  }
+
+}
+.topbar-name {
+  font-size: 16px;
+  font-weight: bold;
+  color:white;
+  margin: 0px;
+}
+
 .events-block-title {
   font-weight: 500;
   color: $red;
