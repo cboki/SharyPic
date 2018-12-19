@@ -5,12 +5,12 @@
         <div class="event-header-top text-center">
           <p id="event-name"><%= @event.name.upcase %></p>
           <p><%= @event.location %> </p>
-          <% if @event.end_date.present? %>
+          <!-- <% ifs @event.end_date.present? %>
             <p><%= @event.start_date.strftime( "%a %e %b %Y") %></p>
-          <% end %>
-          <% if @event.end_date.present? %>
+          <% ends %>
+          <% ifs @event.end_date.present? %>
             <p><%= @event.end_date.strftime( "%a %e %b %Y")  %></p>
-          <% end %>
+          <% ends %> -->
         </div>
         <div class="event-header-bottom">
           <div class="event-header-bottom-left">
@@ -52,6 +52,19 @@
       <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
       <%= f.submit "Upload photos to this event", class: "btn btn-danger" %>
       <% end %>
+      <div class="gallery">
+        <div class="row">
+          <% @event.photos.each do |photo| %>
+            <%= link_to event_photo_path(@event, photo) do %>
+              <div class="col-xs-6 col-md-4">
+                <div class="photo">
+                  <%= cl_image_tag(photo.file) %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <% else %>
       <div class="gallery">
