@@ -1,3 +1,9 @@
+.wrapper-topbar {
+  background-size: cover !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 100vw;
+  height: 8vh;
+}
+
 .events-block-title {
   font-weight: 500;
   color: $red;
