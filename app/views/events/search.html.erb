@@ -1,54 +1,40 @@
-<div class="container fix-padding">
-  <div class="wrapper-topbar" style="background-image: linear-gradient(-225deg, rgba(255, 106, 0, 0.8) 10%, rgba(252, 3, 3, 0.69) 65%);">
-    <div class="subcontainer-topbar">
-
+<div class="wrapper-topbar" style="background-image: linear-gradient(-225deg, rgba(255, 106, 0, 0.8) 10%, rgba(252, 3, 3, 0.69) 65%);">
+  <div class="subcontainer-topbar">
+    <div class="topbar-name text-center">
+      <p>SEARCH FOR NEW EVENTS</p>
     </div>
   </div>
-  <div class="subcontainer">
-    <div class= "btn btn btn-outline-danger btn-sm center-block">
-    </div>
-    <div class="searches">
-      <div id="search-by-location" class="btn btn-primary btn-danger">
-        <span class="glyphicon glyphicon-map-marker"></span> Search near me
-      </div>
-      <p id="user-position"></p>
-      <p><strong>OR</strong></p>
-
-
-      <div class="search-by-name">
-        <%= form_tag search_events_path, method: :get, class: "form-inline" do %>
+</div>
+<div class="subcontainer">
+  <div class="searches">
+    <div class="search-by-name">
+      <%= form_tag search_events_path, method: :get, class: "form-inline" do %>
         <div id= "search-data" class="form-search search-data" data-acevents="<%= @acevents.to_json %>">
-          <%= text_field_tag :query,
-          params[:query],
-          autocomplete: :off,
-          class: "form-control search-input",
-            placeholder: "Search by name"
-            %>
-            <div id= "search-data" class="form-search search-data" data-acevents="<%= @acevents.to_json %>">
-
-            </div>
-
-            <% end %>
-          </div>
-   </div>
-        </div>
-
-
-      <div id="events-nearby">
-        <% if @events.present? %>
-        <% @events.each do |event| %>
-        <%= link_to event_path(event) do %>
-        <div class='result'>
-          <div class="event-creator-avatar">
-            <%= cl_image_tag(event.creator.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
-          </div>
-          <div class="event-name">
-            <%= event.name %>
+          <%= text_field_tag :query, params[:query], autocomplete: :off, class: "form-control search-input", placeholder: "Search by name" %>
+          <div id= "search-data" class="form-search search-data" data-acevents="<%= @acevents.to_json %>">
           </div>
         </div>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
+      <% end %>
+    </div>
+    <p class="text-center" style="margin: 10px;">or</p>
+    <div class="by-location">
+      <p class="btn-shary" id="search-by-location">Search near your current location</p>
     </div>
   </div>
+  <div id="events-nearby">
+    <% if @events.present? %>
+      <% @events.each do |event| %>
+        <%= link_to event_path(event) do %>
+          <div class='result'>
+            <div class="event-creator-avatar">
+              <%= cl_image_tag(event.creator.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
+            </div>
+            <div class="event-name">
+              <%= event.name %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
