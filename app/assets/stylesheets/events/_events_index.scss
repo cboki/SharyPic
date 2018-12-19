@@ -24,10 +24,12 @@
 .topbar-name {
   flex-grow: 1;
   margin-right: 20px;
+  p {
   font-size: 16px;
   font-weight: bold;
   color:white;
   margin: 0px;
+  }
 }
 
 .events-block-title {
