@@ -1,22 +1,71 @@
-<div class="navbar-wagon ">
+<div class="navbar-shary ">
 
-  <!-- Logo -->
-  <%= link_to events_path, class: "navbar-gps" do %>
-  <i class="fas fa-map-marker-alt fa-2x"></i>
+  <!-- event -->
+
+  <div class="center">
+  <%= link_to events_path, class: "event" do %>
+  <i class="far fa-calendar-alt fa-lg"></i>
   <% end %>
+  <p>Events</p>
+  </div>
 
+<!-- search -->
+  <div class="center">
+  <%= link_to   search_events_path, class: "search" do %>
+  <i class="fas fa-search-location fa-lg"></i>
+  <% end %>
+  <p>Search</p>
+  </div>
+
+<!-- camera -->
+  <div class="center">
   <%= link_to camera_path, class: "navbar-camera" do %>
-  <i class="fas fa-camera fa-2x fa-red"></i>
+  <i class="fas fa-camera fa-lg"></i>
   <% end %>
+  <p>Camera</p>
+  </div>
 
-  <!-- Right Navigation -->
+  <!--  create -->
+  <div class="center">
+  <%= link_to new_event_path, class: "create" do %>
+  <i class="far fa-calendar-plus fa-lg"></i>
+  <% end %>
+  <p>Create</p>
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="hidden-md hidden-lg">
+
+    <div class="btn-group dropup center">
+      <a href="#" data-toggle="dropdown"><i class="fas fa-user-circle fa-lg" ></i></a>
+      <p>Settings</p>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+
+        <% if current_user %>
+        <li><%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
+          <% end %></li>
+          <% else %>
+          <li><%= link_to new_user_session_path, method: :get do %>
+            <i class="fas fa-sign-in-alt"></i> <%= t(".sign_in", default: "Sign in") %>
+            <% end %></li>
+            <% end %>
+            <li><%= link_to "#" do %>
+              <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
+              <% end %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <!-- loggin
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
 
     <%= link_to "Logout", destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete %>
 
-    <!-- Avatar with dropdown menu -->
+
     <div class="navbar-wagon-item">
       <div class="dropdown">
         <% if current_user.photo == nil %>
@@ -44,31 +93,7 @@
       </div>
     </div>
     <% else %>
-    <!-- Login link (when logged out) -->
+
     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
-  </div>
-
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="hidden-md hidden-lg">
-    <div class="btn-group dropup">
-      <a href="#" data-toggle="dropdown"><i class="fas fa-user-circle fa-2x fa-red" ></i></a>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <% if current_user %>
-
-        <li><%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
-          <% end %></li>
-
-          <% else %>
-          <li><%= link_to new_user_session_path, method: :get do %>
-            <i class="fas fa-sign-in-alt"></i> <%= t(".sign_in", default: "Sign in") %>
-            <% end %></li>
-            <% end %>
-            <li><%= link_to "#" do %>
-              <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  </div> -->
