@@ -9,13 +9,12 @@ class Photo < ApplicationRecord
 
   validates :file, :event, presence: true
 
-  after_create :add_google_tags
+  #after_create :add_google_tags
 
   private
 
   def add_google_tags
-
-    image_annotator = Google::Cloud::Vision::ImageAnnotator.new
+    image_annotator = Google::Cloud::Vision::ImageAnnotator.new(credentials: GOOGLE_APPLICATION_CREDENTIALS)
     response = image_annotator.label_detection(image: file)
     response.responses.each do |res|
       res.label_annotations.each do |label|
@@ -23,10 +22,10 @@ class Photo < ApplicationRecord
         if in_tabel.nil?
           @tag = Tag.new
           @tag.name = label.description
-          @tag.save!
+          @tag.save
         end
         tag = Tag.find_by(name: label.description)
-        @photo_tag = PhotoTag.create!(
+        @photo_tag = PhotoTag.create(
           tag: tag,
           photo: self
         )
