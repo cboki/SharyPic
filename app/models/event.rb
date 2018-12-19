@@ -21,4 +21,8 @@ class Event < ApplicationRecord
   def event_avatar
     self.photos.first.nil? ? "default_avatar.png" : self.photos.first.file
   end
+
+  def address_short
+    self.location.split(',').first
+  end
 end

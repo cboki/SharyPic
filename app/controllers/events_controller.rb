@@ -11,7 +11,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.all
     @event = authorize Event.find(params[:id])
     @eventguest = EventGuest.new
       if current_user.nil?
