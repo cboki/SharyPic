@@ -1,7 +1,6 @@
 <div class="navbar-shary ">
 
   <!-- event -->
-
   <div class="center">
   <%= link_to events_path, class: "event" do %>
   <i class="far fa-calendar-alt fa-lg"></i>
@@ -9,12 +8,12 @@
   <p>Events</p>
   </div>
 
-<!-- search -->
+  <!--  create -->
   <div class="center">
-  <%= link_to   search_events_path, class: "search" do %>
-  <i class="fas fa-search-location fa-lg"></i>
+  <%= link_to new_event_path, class: "create" do %>
+  <i class="far fa-calendar-plus fa-lg"></i>
   <% end %>
-  <p>Search</p>
+  <p>Create</p>
   </div>
 
 <!-- camera -->
@@ -25,12 +24,12 @@
   <p>Camera</p>
   </div>
 
-  <!--  create -->
+  <!-- search -->
   <div class="center">
-  <%= link_to new_event_path, class: "create" do %>
-  <i class="far fa-calendar-plus fa-lg"></i>
+  <%= link_to   search_events_path, class: "search" do %>
+  <i class="fas fa-search-location fa-lg"></i>
   <% end %>
-  <p>Create</p>
+  <p>Search</p>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
