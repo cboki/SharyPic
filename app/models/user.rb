@@ -15,4 +15,13 @@ class User < ApplicationRecord
   def is_liking?(photo)
     likes.find_by(photo_id: photo.id).present?
   end
+
+  def user_avatar
+    self.photo.nil? ? "unknown.png" : self.photo
+  end
+
+  def name
+    customized_name = self.email.split('@').first
+    self.username.nil? ? customized_name : self.username
+  end
 end

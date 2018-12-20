@@ -15,10 +15,10 @@
   <div class="subcontainer">
     <div class="posted-by">
       <div class="publisher-avatar">
-        <%= image_tag(@photo.user.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
+        <%= image_tag(@photo.user.user_avatar, :style=>'height:40px; width:40px; border-radius:50px;') %>
       </div>
       <div class="publishing-name">
-        <p> posted by <%= @photo.user.username %></p>
+        <p> posted by <%= @photo.user.name %></p>
       </div>
     </div>
     <div class="photo-card card-border">
