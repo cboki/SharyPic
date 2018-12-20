@@ -26,14 +26,15 @@
     <% if @events.present? %>
       <% @events.each do |event| %>
         <%= link_to event_path(event) do %>
-          <div class='result'>
-            <div class="event-creator-avatar">
-              <%= cl_image_tag(event.creator.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
-            </div>
-            <div class="event-name">
-              <%= event.name %>
-            </div>
-          </div>
+                <div class='result'>
+                  <div class="event-creator-avatar">
+                    <%= image_tag(event.creator.user_avatar, :style=>'height:40px; width:40px; border-radius:50px;') %>
+                  </div>
+                  <div class="result-central">
+                    <div class="event-name"><%= event.name %></div>
+                    <div class="event-location-results"><%= event.location %></div>
+                  </div>
+                </div>
         <% end %>
       <% end %>
     <% end %>
