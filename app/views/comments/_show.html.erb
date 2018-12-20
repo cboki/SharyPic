@@ -1,9 +1,9 @@
 <div class="comment">
   <div class="comment-avatar">
-    <%= image_tag(comment.user.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
+    <%= image_tag(comment.user.user_avatar, :style=>'height:40px; width:40px; border-radius:50px;') %>
   </div>
   <div class="comment-content">
-    <p><span><%= comment.user.username %></span></p>
+    <p><span><%= comment.user.name %></span></p>
     <p><%= comment.content %></p>
   </div>
 </div>
