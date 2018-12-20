@@ -1,3 +1,4 @@
+<% content_for :title, "Shary Pix - Event: #{@event.name}" %>
 <div class="wrapper-header" style="background-image: linear-gradient(-225deg, rgba(255, 106, 0, 0.8) 10%, rgba(252, 3, 3, 0.69) 65%), url(<%= @event.background_url %>);">
   <div class="subcontainer-header">
     <div class="event-header">
@@ -12,7 +13,7 @@
       <% end %>
       <div class="event-header-top text-center">
         <p id="event-name"><%= @event.name.upcase %></p>
-        <p><%= @event.location %></p>
+        <p id="event-location-short"><%= @event.location %></p>
       </div>
       <div class="event-header-bottom">
         <div class="event-header-bottom-left">
