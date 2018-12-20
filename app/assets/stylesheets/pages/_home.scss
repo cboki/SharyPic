@@ -48,7 +48,9 @@
   border-radius: 3px;
   width: auto;
   margin: -35px 20px 0 20px;
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
 }
+
 .wrapper2 {
   background-color: #f9eded;
   h2 {
@@ -73,7 +75,6 @@ padding-bottom: 50px;
 
 .number {
   font-size: 28px;
-  font-family: 'Fredoka One', cursive;
   color: $red;
 }
 
