@@ -46,6 +46,10 @@ class EventsController < ApplicationController
 
   def destroy
     # authorize @event
+    @event = Event.find(params[:id])
+    authorize @event
+    @event.destroy
+    redirect_to events_path
   end
 
   def search
