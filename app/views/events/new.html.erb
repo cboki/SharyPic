@@ -14,7 +14,8 @@
           <%= f.input :name, required: false, autofocus: true , placeholder: "Write the name of your event" %>
           <%= f.input :location, required: false, autofocus: true , placeholder: "Where does your event take place ?"  %>
           <%= f.input :start_date, as: :string %>
-          <div class = "checkbox">
+          <%= f.input :end_date, as: :string %>
+           <div class = "checkbox">
           <%= f.input :public, as: :boolean, label: "private event" %>
           </div>
         </div>
