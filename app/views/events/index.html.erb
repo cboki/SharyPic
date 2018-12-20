@@ -78,6 +78,16 @@
         <div class="event-small-card-infos">
           <p class="card-event-name"><%= event.name %></p>
           <p class="card-event-location"><%= event.location %></p>
+          <p class="card-event-date">started: <%= event.start_date %></p>
+          <div class="card-event-created-by">
+            <% if @active_event.creator.photo.present? %>
+              <%= cl_image_tag(event.creator.photo, class: "avatar-small") %>
+            <% end %>
+            <div>
+              <p>created by</p>
+              <p><%= event.creator.username %></p>
+            </div>
+          </div>
         </div>
       </div>
       <% end %>
