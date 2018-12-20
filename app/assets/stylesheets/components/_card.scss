@@ -51,7 +51,7 @@
 }
 
 .card-event-location {
-  font-size: 12px;
+  font-size: 14px;
   color: grey;
   width: 150px;
   white-space: nowrap;
@@ -64,7 +64,12 @@
   height: 120px;
   display: flex;
   margin-bottom: 20px;
-  img {
+  p {
+    margin-left: 5px;
+  }
+}
+
+.event-small-card > img {
     object-fit: cover;
     border-radius: 8px 0 0 8px;
     height: 120px;
@@ -72,12 +77,24 @@
     margin-right: 5px;
   };
 
-  p {
-    font-size: 16px;
-    margin-left: 5px;
+.event-small-card-infos {
+  padding-left: 5px;
+ p {
+  margin: 0px;
   }
 }
 
-.event-small-card-infos {
+.card-event-date {
+  font-size: 12px;
+  color: rgb(120,120,120);
+}
 
+.card-event-created-by {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  p {
+    font-size: 12px;
+    color: rgb(120,120,120);
+  }
 }
