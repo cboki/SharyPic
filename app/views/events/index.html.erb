@@ -39,12 +39,13 @@
       <%= cl_image_tag(@active_event.photos.first.file) %>
       <% end %>
       <div class="latest-event-infos">
+        <div id="up">Up!</div>
         <% if @active_event.creator.photo.present? %>
         <%= cl_image_tag(@active_event.creator.photo, class: "avatar-small") %>
         <% end %>
         <div class="lastest-event-details">
-          <p class="lastest-event-name"><%= @active_event.name %></p>
-          <p class="lastest-event-location"><%= @active_event.location %></p>
+          <p class="card-event-name"><%= @active_event.name %></p>
+          <p class="card-event-location"><%= @active_event.location %></p>
         </div>
       </div>
     </div>
@@ -66,14 +67,17 @@
     </div>
     <% end %>
     <% end %> -->
-    <h4 class="events-block-title">All my events</h4>
+    <p class="events-block-title">All my events</p>
     <div class="all-events">
       <% current_user.events.reverse_each do |event| %>
       <% if event.photos.first.present? %>
       <%= link_to event_path(event) do %>
       <div class="event-small-card card-border">
         <%= cl_image_tag(event.photos.first.file) %>
-        <p><%= event.name %></p>
+        <div class="event-small-card-infos">
+          <p class="card-event-name"><%= event.name %></p>
+          <p class="card-event-location"><%= event.location %></p>
+        </div>
       </div>
       <% end %>
       <% end %>
