@@ -41,6 +41,14 @@
   margin: 0px;
 }
 
+#event-location-short {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 auto;
+}
+
 .event-header-bottom {
   position: absolute;
   bottom: -60px;
