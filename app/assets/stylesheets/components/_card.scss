@@ -98,3 +98,10 @@
     color: rgb(120,120,120);
   }
 }
+
+.small-title {
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
