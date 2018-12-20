@@ -1,7 +1,9 @@
 <div class="container fix-padding">
   <div class="wrapper-topbar" style="background-image: linear-gradient(-225deg, rgba(255, 106, 0, 0.8) 10%, rgba(252, 3, 3, 0.69) 65%);">
     <div class="subcontainer-topbar">
-
+      <div class="topbar-name text-center">
+        <p>ALL MY EVENTS</p>
+      </div>
     </div>
   </div>
   <div class="subcontainer">
@@ -31,19 +33,19 @@
       </div>
     </div>
     <% else %>
-    <h4 class="events-block-title">Your active event</h4>
     <%= link_to event_path(@active_event) do %>
     <div class="latest-event card-border">
-      <% if !@active_event.photos.first.nil? %>
+      <% if @active_event.photos.first.present? %>
       <%= cl_image_tag(@active_event.photos.first.file) %>
       <% end %>
       <div class="latest-event-infos">
-        <% if !@active_event.creator.photo.nil?%>
+        <div id="up">Up!</div>
+        <% if @active_event.creator.photo.present? %>
         <%= cl_image_tag(@active_event.creator.photo, class: "avatar-small") %>
         <% end %>
         <div class="lastest-event-details">
-          <p class="lastest-event-name"><%= @active_event.name %></p>
-          <p class="lastest-event-location"><%= @active_event.location %></p>
+          <p class="card-event-name"><%= @active_event.name %></p>
+          <p class="card-event-location"><%= @active_event.location %></p>
         </div>
       </div>
     </div>
@@ -65,14 +67,17 @@
     </div>
     <% end %>
     <% end %> -->
-    <h4 class="events-block-title">All your events</h4>
+    <p class="events-block-title">All my events</p>
     <div class="all-events">
       <% current_user.events.reverse_each do |event| %>
-      <% if event.photos.first != nil %>
+      <% if event.photos.first.present? %>
       <%= link_to event_path(event) do %>
       <div class="event-small-card card-border">
         <%= cl_image_tag(event.photos.first.file) %>
-        <p><%= event.name %></p>
+        <div class="event-small-card-infos">
+          <p class="card-event-name"><%= event.name %></p>
+          <p class="card-event-location"><%= event.location %></p>
+        </div>
       </div>
       <% end %>
       <% end %>
