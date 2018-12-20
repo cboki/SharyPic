@@ -13,6 +13,14 @@
     </div>
   </div>
   <div class="subcontainer">
+    <div class="posted-by">
+      <div class="publisher-avatar">
+        <%= image_tag(@photo.user.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
+      </div>
+      <div class="publishing-name">
+        <p> posted by <%= @photo.user.username %></p>
+      </div>
+    </div>
     <div class="photo-card card-border">
       <div class="photo-image">
         <%= cl_image_tag(@photo.file, class: "main-image")%>
@@ -42,12 +50,12 @@
          <% end %>
       </div>
     </div>
-    <div class="section">
+<!--     <div class="section">
       <p class="section-title">Tags</p>
       <% @photo.photo_tags.each do |tag| %>
         <p class="tag">#<%= tag.tag.name %></p>
       <% end %>
-    </div>
+    </div> -->
     <div class="section">
       <p class="section-title">Comments</p>
       <%= render 'photos/comment', photo: @photo, comment: @comment %>

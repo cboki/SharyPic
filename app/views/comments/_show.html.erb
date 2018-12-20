@@ -3,6 +3,7 @@
     <%= image_tag(comment.user.photo, :style=>'height:40px; width:40px; border-radius:50px;') %>
   </div>
   <div class="comment-content">
+    <p><span><%= comment.user.username %></span></p>
     <p><%= comment.content %></p>
   </div>
 </div>

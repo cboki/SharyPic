@@ -6,7 +6,15 @@
   object-fit: cover;
   border-radius: 8px 8px 0px 0px;
 }
-
+.posted-by {
+  display:flex;
+  align-items: center;
+  margin-bottom: 10px;
+  p {
+    margin: 0;
+    padding-left: 10px;
+  }
+}
 .photo-card {
   background-color: white;
 }
@@ -58,5 +66,8 @@
 .comment-content {
   p {
     margin: 0px;
+  }
+  span {
+    font-weight: bold;
   }
 }
