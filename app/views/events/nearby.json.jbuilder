@@ -6,7 +6,7 @@ end
 
 json.events @events do |event|
   json.id event.id
-  json.creator event.creator.photo
+  json.creator event.creator.user_avatar
   json.name event.name
   json.location event.location
   json.distance event.distance

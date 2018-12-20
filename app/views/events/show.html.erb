@@ -47,7 +47,7 @@
   <% if current_user.is_not_guest?(@event) %>
     <div class= "text-center btn-event-show">
       <%= simple_form_for [@eventguest], url: user_event_event_guests_path(current_user, @event), :method => :post do |f| %>
-      <%= f.submit "Join", class: "btn-shary" %>
+      <%= f.submit "Join to see all photos", class: "btn-shary" %>
       <% end %>
     </div>
   <% elsif current_user.active_event_id != @event.id  %>
