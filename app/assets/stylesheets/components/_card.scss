@@ -53,6 +53,10 @@
 .card-event-location {
   font-size: 12px;
   color: grey;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .event-small-card {
@@ -72,4 +76,8 @@
     font-size: 16px;
     margin-left: 5px;
   }
+}
+
+.event-small-card-infos {
+
 }

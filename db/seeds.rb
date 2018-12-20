@@ -25,51 +25,54 @@ puts 'DATABASE IS CLEAN!!!'
 
 github_names = %w[welan125 BenDu89 carolinalemos sisserian kauredo UpClelia cboki dfmore jonnymarshall mlrcbsousa matbrg pbusby Bitais]
 
-clement = User.create(
+clement = User.create!(
     email: 'clement@gmail.com',
     password: 'clement',
     professional: false,
+    username: 'Clément',
     photo: "https://kitt.lewagon.com/placeholder/users/cboki"
 )
 
-clelia = User.create(
+clelia = User.create!(
     email: 'clelia@gmail.com' ,
     password: 'clelia',
     professional: false,
+    username: 'Clélia',
     photo: "https://kitt.lewagon.com/placeholder/users/upclelia"
 )
 
-ben = User.create(
-    email: 'ben@gmail.com' ,
-    password: 'bendu89',
+max = User.create!(
+    email: 'Max@gmail.com' ,
+    password: 'maxxxxam',
     professional: false,
-    photo: "https://kitt.lewagon.com/placeholder/users/bendu89"
+    username: 'Max',
+    photo: "https://kitt.lewagon.com/placeholder/users/MaxxxxaM"
 )
 
 puts 'Created 3 new users...'
 
 
-ben_birthday = Event.create(
+ben_birthday = Event.create!(
     creator: clement,
     name: "Ben's birthday",
     location: 'Cascais, Portugal',
     radius: 10,
     start_date: Faker::Date.forward(10),
   )
-wagon = Event.create(
+wagon = Event.create!(
     creator: clelia,
-    name: " incentive trip",
+    name: "Incentive trip",
     location: 'Comporta, Portugal',
     radius: 100,
-    start_date: Faker::Date.backward(10),
+    start_date: Faker::Date.backward(3),
   )
 
-inauguration = Event.create(
-    creator: ben,
+inauguration = Event.create!(
+    creator: max,
     name: "Le wagon inauguration",
     location: 'Praça Marquês de Pombal, Lisboa',
     radius: 10,
-    start_date: Faker::Date.backward(10),
+    start_date: Faker::Date.backward(3),
   )
 puts 'Created an event for all users...'
 
@@ -118,7 +121,7 @@ end
 INAUGURATION.each do |pic|
 Photo.create!(
     file:pic,
-    user: ben,
+    user: max,
     event: inauguration
 )
 end
