@@ -17,11 +17,11 @@ class EventPolicy < ApplicationPolicy
     end
 
     def update?
-      record.user == user
+      record.creator == user
     end
 
     def destroy?
-      record.user == user
+      record.creator == user
     end
 
     def nearby?
