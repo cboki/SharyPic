@@ -10,7 +10,7 @@ J'ai particulièrement contribué à la fonctionnalité 'Recherche' des évènem
 
 Application Rails générée à partir du modèle [lewagon/rails-templates](https://github.com/lewagon/rails-templates), créé par l'équipe [Le Wagon](https://www.lewagon.com).
 
-## Sreenshots
+## Screenshots
 
 **Index page de tous les évènements auquel l'utilisateur a participé**
 
