@@ -14,7 +14,7 @@ Application Rails générée à partir du modèle [lewagon/rails-templates](http
 
 **Index page de tous les évènements auquel l'utilisateur a participé**
 
-![Page d'un évènement](/public/images/show_event_beforejoin.png)
+![Page d'un évènement](/public/images/index_event.png)
 
 **Page d'un évènement auquel l'utilisateur participe**
 
